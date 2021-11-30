@@ -15,4 +15,7 @@ export default {
   .width {
     width: 1640px;
   }
+  html {
+    scroll-behavior: smooth;
+  }
 </style>

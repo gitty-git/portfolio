@@ -22,3 +22,8 @@ export default {
     components: {Logo, AboutIcon,WorksIcon, ContactIcon}
 }
 </script>
+<style>
+    .text-18 {
+        font-size: 18px;
+    }
+</style>

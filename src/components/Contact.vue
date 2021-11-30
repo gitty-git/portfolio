@@ -1,5 +1,5 @@
 <template>
-    <div id="contact" class="h-screen">
-        Contact   
+    <div id="contact" class="h-screen bg-blueGray">
+        Contact
     </div>
 </template>
