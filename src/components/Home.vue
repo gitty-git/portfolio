@@ -11,48 +11,51 @@
             <div class="w-full top-0 h-screen absolute">
                     <div class="h-screen left absolute left-15 flex flex-col justify-center z-10">
                         <div class="flex">
-                            <div class="uppercase ml-7 text-orangeRed font-black hello -my-20">hello</div>
-                            <div class="uppercase text-antiqueWhite font-black hello absolute -ml-2 -my-20">hello</div>
+                            <h1 class="uppercase leading-none ml-7 text-orangeRed font-black hello -my-1vw">hello</h1>
+                            <h1 class="uppercase leading-none text-antiqueWhite font-black hello absolute -ml-2 -my-1vw">hello</h1>
                         </div>
                         <div>
-                            <div class="text-5xl mt-4 font-light">My name's Evgeny,</div>
-                            <div class="text-3xl mt-4 font-bold">Web Developer,</div>
-                            <div class="text-3xl font-bold">Designer</div>
+                            <p class="text-2-3vw leading-none mt-8 font-light">My name's Evgeny,</p>
+                            <p class="text-1-5vw leading-none mt-8 font-bold">Web Developer,</p>
+                            <p class="text-1-5vw leading-none font-bold">Designer</p>
                         </div>
                     </div>
 
-                    <div class="z-10 h-screen relative overflow-hidden flex items-center flex-col justify-end right bottom-0" ref="me">
+                    <div class="z-10 h-screen transform 2xl:scale-100 scale-50 relative overflow-hidden flex items-center flex-col justify-end right bottom-0" ref="me">
                         <TopHead class="z-10 -mb-2"/>
-                        <div ref="icons" class="z-0">
+                        <div ref="iconsWrapper" class="flex items-start">
+                        <div ref="icons" class="z-0 opacity-90">
                             <div class="flex">
                                 <div>
                                     <Tailwind class="ml-10 mr-10 x-axis"/>
                                 </div>                                
                                 <div>
-                                    <Tailwind class="mr-14 mt-4 animateIcon2"/>
+                                    <JS class="mr-14 mt-4 animateIcon2"/>
                                 </div>
                                 <div>
-                                    <Tailwind class="mr-4 animateIcon3"/>
+                                    <FireBase class="mr-4 animateIcon3"/>
                                 </div>
                                 <div>
-                                    <Tailwind class="mr-6 mt-10 animateIcon4"/>
+                                    <Laravel class="mr-6 mt-10 animateIcon4"/>
                                 </div>
                             </div>
                             <div class="flex -mt-5">
                                 <div>
-                                    <Tailwind class="mr-10 mt-4"/>
+                                    <XD class="mr-10 mt-4"/>
                                 </div>
                                 <div>
-                                    <Tailwind class="mr-16 mt-6"/>
+                                    <HTML5 class="mr-16 mt-6"/>
                                 </div>
                                 <div>
-                                    <Tailwind class="mr-10 mt-4"/>
+                                    <Vue class="mr-10 mt-4"/>
                                 </div>
                                 <div>
-                                    <Tailwind class="mr-10 mt-12"/>
+                                    <CSS3 class="mr-10 mt-12"/>
                                 </div>
                             </div>
-                        </div>                            
+                        </div>     
+                        </div>
+                   
                         <div ref="rest" class="z-10">
                             <Rest/>
                         </div>                        
@@ -65,10 +68,18 @@
 import TopHead from './images/TopHead.vue'
 import Rest from './images/Rest.vue'
 import Tailwind from './icons/Tailwind'
+import CSS3 from './icons/CSS3'
+import HTML5 from './icons/HTML5'
+import FireBase from './icons/FireBase'
+import JS from './icons/JS'
+import Laravel from './icons/Laravel'
+import Vue from './icons/Vue'
+import XD from './icons/XD'
+
 import {ref, onMounted, onUnmounted} from 'vue'
 
 export default {
-    components: {TopHead, Rest, Tailwind},
+    components: {TopHead, Rest, Tailwind, CSS3, HTML5, FireBase, JS, Laravel, Vue, XD},
     setup() {
         const width = ref('0')
         const home = ref(null)
@@ -77,28 +88,31 @@ export default {
         const about = ref(null)
         const rest = ref(null)
         const icons = ref(null)
+        const iconsWrapper = ref(null)
+        //incons-wrapper
 
         const animateIcons = () => {
             icons.value.childNodes.forEach(iconLine => {
                 iconLine.childNodes.forEach(icon => {
-                    const max = 8, min = 4
+                    const maxY = 8, minY = 4
+                    const maxX = 4, minX = 8
                     icon.animate([
                         {transform: `translateY(0px)`},
-                        {transform: `translateY(${(Math.random() * (max - min) + min)}px)`}
+                        {transform: `translateY(${(Math.random() * (maxY - minY) + minY)}px)`}
                     ], 
                     {
                         direction: 'alternate',
-                        duration: ((Math.random() * (3 - 1) + 1)  *  1000),
+                        duration: ((Math.random() * (4 - 1) + 1)  *  1000),
                         iterations: Infinity,
                         easing: 'ease-in-out'
                     })
                     icon.childNodes[0].animate([
                         {transform: `translateX(0px)`},
-                        {transform: `translateX(${(Math.random() * (max - min) + min)}px)`}
+                        {transform: `translateX(${(Math.random() * (maxX - minX) + minX)}px)`}
                     ],
                     {
                         direction: 'alternate',
-                        duration: ((Math.random() * (3 - 1) + 1)  *  1000),
+                        duration: ((Math.random() * (4 - 1) + 1)  *  1000),
                         iterations: Infinity,
                         easing: 'ease-in-out'
                     })
@@ -106,8 +120,7 @@ export default {
             })}
 
         const onScroll = () => {
-            const homeRect = home.value.getBoundingClientRect()
-            
+            const homeRect = home.value.getBoundingClientRect()            
             if (documentHeight.value.scrollTop >= homeRect.height) {
                 me.value.style.position = 'absolute'
                 me.value.style.top = homeRect.height + 'px'      
@@ -115,7 +128,8 @@ export default {
             else {
                 me.value.style.position = 'fixed'
                 me.value.style.top = '0'
-                icons.value.style.height = documentHeight.value.scrollTop / 10 * 1.4 + 'px'
+                iconsWrapper.value.style.height = documentHeight.value.scrollTop / 10 * 1.4 + 'px'
+                icons.value.style.marginTop = (32 - (documentHeight.value.scrollTop / 32)) * -1 + 'px'
                 rest.value.style.marginBottom = documentHeight.value.scrollTop * -1 / 20 * 1.4 + 'px'
             }
         }
@@ -132,13 +146,23 @@ export default {
             window.removeEventListener('scroll', onScroll)
         })
 
-        return {width, home, me, rest, icons}
+        return {width, home, me, rest, icons, iconsWrapper}
     }
 }
 </script>
 <style>
 .hello {
-    font-size: 216px;
+    /* font-size: 216px; */
+    font-size: 12vw;
+}
+.text-2-3vw {
+    font-size: 2.3vw;
+}
+.text-1-5vw {
+    font-size: 1.5vw;
+}
+.-my-1vw {
+    margin: -1vw 0 -1vw 0;
 }
 .w-long {
     width: 2500px;
