@@ -11,11 +11,17 @@
             <div ref="slides" class="mt-24 w-full absolute left-0 duration-500">
                 <div class="w-1/2 absolute" v-for="work, id in works" :key="work">         
                     <div class="relative">                 
-                        <button @click="handleLeftBtn(work)" v-show="work.active && work.id !== 0" class="-left-16 z-10 cursor-pointer top-1/2 absolute transform rotate-180"><ArrowR /></button>       
+                        <button @click="handleLeftBtn(work)" v-show="work.active && work.id !== 0" 
+                            class="-left-16 -ml-2 p-2 z-10 cursor-pointer top-1/2 absolute transform rotate-180">
+                            <ArrowR />
+                        </button>       
                         <h1 class="rotateH1">{{id + 1}}. {{work.title}}</h1>
                         <img class="pr-20" :src="require(`@/assets/${work.img}`)" alt="">
                         <p class="absolute text-right w-full pr-20 text-xs mt-2">{{work.tags}}</p>
-                        <button @click="handleRightBtn(work)" v-show="work.active && work.id !== works.length - 1" class="right-12 z-10 cursor-pointer top-1/2 absolute"><ArrowR /></button>          
+                        <button @click="handleRightBtn(work)" v-show="work.active && work.id !== works.length - 1" 
+                            class="right-10 p-2 z-10 cursor-pointer top-1/2 absolute">
+                            <ArrowR />
+                        </button>          
                     </div>
                 </div>                
             </div>
