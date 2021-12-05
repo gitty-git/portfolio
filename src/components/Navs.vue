@@ -2,11 +2,11 @@
     <a href="#home" class="fixed bottom-0 z-50">
         <Logo class="fixed top-14 left-14" active width="42"/>
     </a>    
-    <a href="#works" class="fixed top-14 right-14 z-50">
-        <WorksIcon/>
-    </a>
-    <a href="#about" class="fixed left-14 bottom-14 z-50">
+    <a href="#about" class="fixed top-14 right-14 z-50">
         <AboutIcon/>
+    </a>
+    <a href="#works" class="fixed left-14 bottom-14 z-50">
+        <WorksIcon/>        
     </a>
     <a href="#contact" class="fixed bottom-14 right-14 z-50">
         <ContactIcon/>

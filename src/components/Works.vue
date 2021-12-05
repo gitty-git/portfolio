@@ -1,5 +1,6 @@
 <template>
-    <div id="works" class="h-screen block bg-antiqueWhite overflow-hidden relative">
+    <div id="works" class="h-screen block shadow-md bg-antiqueWhite overflow-hidden relative">
+        <div class="w-full opacity-30 h-2 bg-gradient-to-b from-graphiteBlack absolute z-10"></div>
         <div class="bottom-1/3 bg-font-size opacity-5 font-black absolute left-1/2 transform -rotate-30">WORKS</div>
         <div class="left-10m -top-64 absolute w-full transform -rotate-30">
             
@@ -9,82 +10,24 @@
                 <h1 class="text-right">works</h1>
             </div>
             <div ref="slides" class="mt-24 w-full absolute left-0 duration-500">
-                <div class="w-1/2 absolute" v-for="work, id in works" :key="work">         
+                <div class="w-1/2 absolute" v-for="work, id in works" :key="work">
                     <div class="relative">                 
                         <button @click="handleLeftBtn(work)" v-show="work.active && work.id !== 0" 
-                            class="-left-16 -ml-2 p-2 z-10 cursor-pointer top-1/2 absolute transform rotate-180">
+                            class="-left-16 -ml-2 p-2 z-10 cursor-pointer top-1/2 absolute transform -translate-y-1/2 rotate-180">
                             <ArrowR />
                         </button>       
                         <h1 class="rotateH1">{{id + 1}}. {{work.title}}</h1>
-                        <img class="pr-20" :src="require(`@/assets/${work.img}`)" alt="">
+                        <div class="pr-20">
+                            <img class="shadow-md" :src="require(`@/assets/${work.img}`)" alt="">    
+                        </div>                        
                         <p class="absolute text-right w-full pr-20 text-xs mt-2">{{work.tags}}</p>
                         <button @click="handleRightBtn(work)" v-show="work.active && work.id !== works.length - 1" 
-                            class="right-10 p-2 z-10 cursor-pointer top-1/2 absolute">
+                            class="right-10 p-2 z-10 cursor-pointer transform -translate-y-1/2 top-1/2 absolute">
                             <ArrowR />
                         </button>          
                     </div>
                 </div>                
             </div>
-
-
-            <!-- <div ref="slider" class="relative w-1/2 mt-24">
-                <button @click.prevent="handleLeftBtn" class="z-20 absolute top-1/2 transform translate-x-1/2 cursor-pointer -ml-2 -left-16">
-                    <ArrowR class="transform rotate-180"/>
-                </button>
-                <div ref="track" class="relative h-auto duration-200 w-full">
-                    <div class="active slide top-0 h-auto bottom-0 w-full">
-                        <div class="pr-10vw w-full h-auto">
-                            <h1 class="rotateH1">1. Stone Electro</h1>
-                            <img class="shadow-md w-full h-auto" src="../assets/stone-electro/stone-electro.png" alt="">
-                        </div>
-                    </div>
-                    <div class="slide absolute top-0 bottom-0 w-full">
-                        <div class="pr-10vw w-full">
-                            <h1 class="rotateH1">2. News Site</h1>
-                            <img class="shadow-md w-full" src="../assets/news-site/news-site.png" alt="">
-                        </div>
-                    </div>
-                    <div class="slide absolute top-0 bottom-0 w-full">
-                        <div class="pr-10vw w-full">
-                            <h1 class="rotateH1">1. Portfolio</h1>
-                            <img class="shadow-md w-full" src="../assets/portfolio/portfolio.png" alt="">
-                        </div>
-                    </div>
-                </div>
-                <button @click.prevent="handleRightBtn" class="z-20 absolute top-1/2 transform translate-x-1/2 cursor-pointer right-0">
-                    <ArrowR/>
-                </button>
-            </div> -->
-            <!-- <div class="relative w-full" ref="worksWrapper">
-            <div class="flex absolute" ref="works">
-                <div class="relative mt-24 w-64 mr-12" ref="workItem">
-                    <div class="block absolute -ml-2 top-0 left-0 bottom-0 whitespace-nowrap">
-                        <h1 class="rotateH1">1. Stone Electro</h1>
-                    </div>
-                    <div class="flex h-full items-center ">
-                        <div>
-                            <img class="shadow-md" src="../assets/stone-electro/stone-electro.png" alt="">
-                        </div>
-                        <div class="h-full flex items-center px-5 hover:bg-red-50 cursor-pointer" @click="handleClick">
-                            <ArrowR />
-                        </div>
-                    </div>
-                </div>
-                <div class="relative mt-24 w-64 mr-12" ref="workItem">
-                    <div class="block absolute -ml-2 top-0 left-0 bottom-0 whitespace-nowrap">
-                        <h1 class="rotateH1">1. Stone Electro</h1>
-                    </div>
-                    <div class="flex h-full items-center ">
-                        <div>
-                            <img class="shadow-md" src="../assets/stone-electro/stone-electro.png" alt="">
-                        </div>
-                        <div class="h-full flex items-center px-5 hover:bg-red-50 cursor-pointer" @click="handleClick">
-                            <ArrowR />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            </div> -->
         </div>
     </div>
 </template>
@@ -123,22 +66,26 @@ export default {
             }
         }
 
-        onMounted(() => {
+        const setSlideWidths = () => {
             slideWidth.value = slides.value.children[0].offsetWidth
             const slidesChildren = [...slides.value.children]
 
             slidesChildren.forEach((slide, index) => {
                 slide.style.left = slideWidth.value * index + 'px'
             })
-            // setSlidesWidth()
-            // window.addEventListener('resize', e => {
-            //     setSlidesWidth()
-            //     translateToSlide(track, track.value.children[0], track.value.children[0])
-            // })
+        }
+
+        onMounted(() => {
+            setSlideWidths()            
+            window.addEventListener('resize', e => {
+                setSlideWidths()                
+            })
         })
 
         onUnmounted(() => {
-
+            window.removeEventListener('resize', e => {
+                setSlideWidths()                
+            })
         })
 
         return {works, slides, handleRightBtn, handleLeftBtn}
@@ -147,11 +94,14 @@ export default {
 </script>
 
 <style scope>
+.shh {
+    box-shadow: 0px 39px 31px -41px rgba(34, 60, 80, 1) inset;
+}
 .bg-font-size{
     font-size: 18vw;
 }
 .left-10m {
-    left: 10%;
+    left: 1px;
 }
 .rotateH1 {
     letter-spacing: 5px;

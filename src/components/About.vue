@@ -1,5 +1,5 @@
 <template>
-  <div id="about" class="h-screen bg-blueGray flex flex-col justify-center overflow-hidden relative">
+  <div id="about" class="h-screen bg-blueGray flex flex-col justify-center overflow-hidden relative">    
     <div class="text-600 absolute transform -rotate-30 font-black opacity-5 -bottom-56 uppercase">
       About
     </div>

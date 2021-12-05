@@ -18,4 +18,13 @@ export default {
   html {
     scroll-behavior: smooth;
   }
+  body::-webkit-scrollbar {
+    padding: 20px;
+    background-color:  #393835;
+    width: 0.6em;
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: #5c5b59;
+  }
 </style>

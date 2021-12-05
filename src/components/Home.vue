@@ -9,19 +9,27 @@
                 </div>
             </div>
             <div class="w-full top-0 h-screen absolute">
-                    <div class="h-screen left absolute left-15 flex flex-col justify-center z-10">
-                        <div class="flex">
-                            <h1 class="uppercase leading-none ml-7 text-orangeRed font-black hello -my-1vw">hello</h1>
-                            <h1 class="uppercase leading-none text-antiqueWhite font-black hello absolute -ml-2 -my-1vw">hello</h1>
-                        </div>
-                        <div>
-                            <p class="text-2-3vw leading-none mt-8 font-light">My name's Evgeny,</p>
-                            <p class="text-1-5vw leading-none mt-8 font-bold">Web Developer,</p>
-                            <p class="text-1-5vw leading-none font-bold">Designer</p>
-                        </div>
+                <div class="h-screen left absolute left-15 flex flex-col justify-center z-10">
+                    <div class="flex helloExlc relative">
+                        <h1 class="uppercase leading-none margin-left-15vw text-orangeRed font-black hello">hello</h1>
+                        <h1 class="uppercase leading-none text-antiqueWhite font-black hello absolute -ml-2">hello</h1>
+                        <svg class="h-full right-0 excl-padding absolute" id="Group_173" data-name="Group 173" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59 154">
+                            <path id="Path_74" data-name="Path 74" d="M0,0H59L49.018,94H10Z" fill="#EF5A38"/>
+                            <rect id="Rectangle_121" data-name="Rectangle 121" width="51" height="39" transform="translate(4 115)" fill="#EF5A38"/>
+                        </svg>
+                        <svg class="h-full padding-right-15vw right-0 excl-padding absolute" id="Group_173" data-name="Group 173" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 59 154">
+                            <path id="Path_74" data-name="Path 74" d="M0,0H59L49.018,94H10Z" fill="#fae6cc"/>
+                            <rect id="Rectangle_121" data-name="Rectangle 121" width="51" height="39" transform="translate(4 115)" fill="#fae6cc"/>
+                        </svg>
                     </div>
+                    <div>
+                        <p class="text-2-3vw leading-none mt-8 font-light">My name's Evgeny,</p>
+                        <p class="text-1-5vw leading-none mt-8 font-bold">Web Developer,</p>
+                        <p class="text-1-5vw leading-none font-bold">Designer</p>
+                    </div>
+                </div>
 
-                    <div class="z-10 h-screen transform 2xl:scale-100 scale-50 relative overflow-hidden flex items-center flex-col justify-end right bottom-0" ref="me">
+                <div class="z-10 h-screen transform 2xl:scale-100 scale-50 relative overflow-hidden flex items-center flex-col justify-end right bottom-0" ref="me">
                         <TopHead class="z-10 -mb-2"/>
                         <div ref="iconsWrapper" class="flex items-start">
                         <div ref="icons" class="z-0 opacity-90">
@@ -59,7 +67,7 @@
                         <div ref="rest" class="z-10">
                             <Rest/>
                         </div>                        
-                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -151,9 +159,22 @@ export default {
 }
 </script>
 <style>
+.excl-padding {
+    padding: 1.7vw 0;
+}
+.margin-left-15vw {
+    margin-left: 1.5vw;
+}
+.padding-right-15vw {
+    padding-right: 1.5vw;
+}
 .hello {
     /* font-size: 216px; */
-    font-size: 12vw;
+    padding-right: 3.2vw;
+    font-size: 11.2vw;
+}
+.helloExlc{
+    margin: -1vw 0;
 }
 .text-2-3vw {
     font-size: 2.3vw;

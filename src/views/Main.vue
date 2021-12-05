@@ -2,7 +2,7 @@
   <!-- <div class="bg-blueGray">asdf</div> -->
   <div class="font-sans">
     <Home/>
-    <About />
+    <About/>    
     <Works/>
     <Contact/>
   </div>
@@ -22,3 +22,10 @@ export default {
   },
 }
 </script>
+
+<style>
+.shadow-mds {
+  box-shadow: 4px 15px 23px 5px rgba(34, 60, 80, 1);
+}
+  
+</style>
