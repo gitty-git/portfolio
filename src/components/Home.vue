@@ -1,13 +1,17 @@
 <template>
     <div id="home" class="bg-blueGray h-screen" ref='home'>
         <div class="absolute w-full h-screen">
-            <div class="relative w-full h-screen overflow-hidden">
-                <div class="top-1/2 z-0 absolute -right-1/3 transform -rotate-30">
-                    <div class="bg-antiqueWhite w-long h-72"></div>
-                    <div class="bg-orangeRed w-long h-48"></div>
-                    <div class="bg-graphiteBlack w-long h-24"></div>
+            
+                <div ref="stripes" class="relative w-full h-screen overflow-hidden">
+                    <div class="top-1/2 mt-12 z-0 absolute -right-1/3 transform -rotate-30">
+                    <transition name="fade" appear mode="in-out">
+                        <div class="bg-antiqueWhite w-long white-stripe"></div>
+                    </transition>
+                        <div class="bg-orangeRed w-long red-stripe"></div>
+                        <div class="bg-graphiteBlack w-long black-stripe"></div>
+                    </div>
                 </div>
-            </div>
+            
             <div class="w-full top-0 h-screen absolute">
                 <div class="h-screen left absolute left-15 flex flex-col justify-center z-10">
                     <div class="flex helloExlc relative">
@@ -29,11 +33,13 @@
                     </div>
                 </div>
 
-                <div class="z-10 h-screen transform 2xl:scale-100 scale-50 relative overflow-hidden flex items-center flex-col justify-end right bottom-0" ref="me">
-                        <TopHead class="z-10 -mb-2"/>
-                        <div ref="iconsWrapper" class="flex items-start">
-                        <div ref="icons" class="z-0 opacity-90">
-                            <div class="flex">
+                <div class="z-10 h-screen transform relative overflow-hidden flex items-center flex-col justify-end right bottom-0" ref="me">
+                    <div ref="topHead" class="z-10">
+                        <TopHead :class="{'top-head' : scrX < 1000}" class="top-head -mb-2"/>
+                    </div>                        
+                    <div ref="iconsWrapper" class="flex items-start">
+                        <div ref="icons" class="z-0 -mt-20 opacity-90">
+                            <div class="flex mt-2">
                                 <div>
                                     <Tailwind class="ml-10 mr-10 x-axis"/>
                                 </div>                                
@@ -62,11 +68,11 @@
                                 </div>
                             </div>
                         </div>     
-                        </div>
+                    </div>
                    
-                        <div ref="rest" class="z-10">
-                            <Rest/>
-                        </div>                        
+                    <div ref="rest" class="z-10">
+                        <Rest2 :class="{'rest' : scrX > 1280}" class="rest" />
+                    </div>                        
                 </div>
             </div>
         </div>
@@ -75,6 +81,7 @@
 <script>
 import TopHead from './images/TopHead.vue'
 import Rest from './images/Rest.vue'
+import Rest2 from './images/Rest2.vue'
 import Tailwind from './icons/Tailwind'
 import CSS3 from './icons/CSS3'
 import HTML5 from './icons/HTML5'
@@ -87,7 +94,7 @@ import XD from './icons/XD'
 import {ref, onMounted, onUnmounted} from 'vue'
 
 export default {
-    components: {TopHead, Rest, Tailwind, CSS3, HTML5, FireBase, JS, Laravel, Vue, XD},
+    components: {TopHead, Rest, Tailwind, CSS3, HTML5, FireBase, JS, Laravel, Vue, XD, Rest2},
     setup() {
         const width = ref('0')
         const home = ref(null)
@@ -95,8 +102,11 @@ export default {
         const documentHeight = ref(document.documentElement)
         const about = ref(null)
         const rest = ref(null)
+        const topHead = ref(null)
         const icons = ref(null)
         const iconsWrapper = ref(null)
+        const scrX = ref(0)
+        const stripes = ref(null)
         //incons-wrapper
 
         const animateIcons = () => {
@@ -127,38 +137,66 @@ export default {
                 })
             })}
 
-        const onScroll = () => {
-            const homeRect = home.value.getBoundingClientRect()            
+        const increaseIconsRect = (e) => {
+            const homeRect = home.value.getBoundingClientRect()
             if (documentHeight.value.scrollTop >= homeRect.height) {
                 me.value.style.position = 'absolute'
-                me.value.style.top = homeRect.height + 'px'      
+                me.value.style.top = homeRect.height + 'px'
             }
             else {
                 me.value.style.position = 'fixed'
                 me.value.style.top = '0'
-                iconsWrapper.value.style.height = documentHeight.value.scrollTop / 10 * 1.4 + 'px'
-                icons.value.style.marginTop = (32 - (documentHeight.value.scrollTop / 32)) * -1 + 'px'
-                rest.value.style.marginBottom = documentHeight.value.scrollTop * -1 / 20 * 1.4 + 'px'
+                rest.value.style.transform = `translateY(${window.scrollY / 15}px)`
+                topHead.value.style.transform = `translateY(-${window.scrollY / 15}px)`
             }
         }
 
         onMounted(() => {
             // consolevalue.childNodes);
             animateIcons()
+            scrX.value = innerWidth
             icons.value.style.height = '0'
             me.value.style.position = 'fixed'
-            window.addEventListener('scroll', onScroll)
+            window.addEventListener('scroll', e => {
+                stripes.value.style.opacity = `${1 - scrollY / 1000}`
+                increaseIconsRect(e)
+            })
+            window.addEventListener('resize', () => {
+                scrX.value = innerWidth
+            })
         })
 
         onUnmounted(() => {
-            window.removeEventListener('scroll', onScroll)
+            window.removeEventListener('scroll', increaseIconsRect)
         })
 
-        return {width, home, me, rest, icons, iconsWrapper}
+        return {width, home, me, rest, topHead, icons, iconsWrapper, scrX, stripes}
     }
 }
 </script>
 <style>
+.white-stripe {
+    height: 12vw;
+}
+.red-stripe {
+    height: 8vw;
+}
+.black-stripe {
+    height: 5vw;
+}
+.rest {
+    width: 760px;
+    height: auto;
+    margin-bottom: -14vw;
+    /* max-width: 21vw; */
+    /* width: 37vw; */
+}
+.top-head {
+    width: 760px;
+    height: auto;
+    /* width: 37vw;     */
+    /* min-width: 21vw; */
+}
 .excl-padding {
     padding: 1.7vw 0;
 }
@@ -193,5 +231,12 @@ export default {
 }
 .right {
     right: 5%;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

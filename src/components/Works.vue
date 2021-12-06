@@ -101,7 +101,7 @@ export default {
     font-size: 18vw;
 }
 .left-10m {
-    left: 1px;
+    left: 12%;
 }
 .rotateH1 {
     letter-spacing: 5px;

@@ -27,4 +27,13 @@ export default {
   body::-webkit-scrollbar-thumb {
     background-color: #5c5b59;
   }
+  ::-moz-selection { 
+    color:  #FAE6CC;
+    background: #EF5A38;
+  }
+
+  ::selection {
+    color: #FAE6CC;
+    background:  #EF5A38;
+  }
 </style>
