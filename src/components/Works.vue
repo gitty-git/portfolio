@@ -1,33 +1,75 @@
 <template>
-    <div id="works" class="h-screen block shadow-md bg-antiqueWhite overflow-hidden relative">
-        <div class="w-full opacity-30 h-2 bg-gradient-to-b from-graphiteBlack absolute z-10"></div>
-        <div class="bottom-1/3 bg-font-size opacity-5 font-black absolute left-1/2 transform -rotate-30">WORKS</div>
-        <div class="left-10m -top-64 absolute w-full transform -rotate-30">
-            
-            <div class="text-6xl -mx-12 font-black uppercase opacity-90 max-w-max transform rotate-90">
-                <h1 class="text-right">My </h1>
-                <h1 class="text-right">recent </h1>
-                <h1 class="text-right">works</h1>
+    <div ref="whiteBg" class="sm:hidden h-76vw -mt-14 w-long sm:mt-0 -left-1/2 absolute transform -rotate-30 bg-antiqueWhite"></div>
+
+    <div ref="worksWrapper" id="works"
+        class="sm:ml-0 z-20 h-72 -mt-6 ml-4 w-full sm:px-0 px-5 sm:left-0 sm:mt-0
+        transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite sm:overflow-hidden sm:relative"
+    >
+        <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-10"></div>
+
+
+            <div class="bg-font-size opacity-5 font-black mb-0 absolute left-1/3 bottom-1/3 transform sm:-rotate-30">
+                <transition
+                        enter-active-class="transition delay-500 transform duration-700 ease-out"
+                        enter-from-class="translate-x-full opacity-0"
+                        leave-active-class="transition transform duration-800 ease-in"
+                        leave-to-class="translate-x-full opacity-0"
+                >
+                    <div class="absolute" v-if="showWorks">WORKS</div>
+                </transition>
             </div>
-            <div ref="slides" class="mt-24 w-full absolute left-0 duration-500">
-                <div class="w-1/2 absolute" v-for="work, id in works" :key="work">
-                    <div class="relative">                 
-                        <button @click="handleLeftBtn(work)" v-show="work.active && work.id !== 0" 
-                            class="-left-16 -ml-2 p-2 z-10 cursor-pointer top-1/2 absolute transform -translate-y-1/2 rotate-180">
+
+
+        <div class="sm:left-0 xl:ml-24 ml-8 lg:mt-80 xl:mt-48 2xl:mt-24 lg:-top-80 md:top-12 ml-2 absolute w-full transform sm:-rotate-30">
+            <h1 class="sm:hidden block text-xl opacity-90 ml-16 uppercase font-black">My recent works</h1>
+
+
+                <div class="text-6xl sm:block hidden -mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
+                    <transition
+                            enter-active-class="transition delay-200 transform duration-800 ease-out"
+                            enter-from-class="-translate-x-96 opacity-0"
+                            leave-active-class="transition transform duration-800 ease-in"
+                            leave-to-class="-translate-x-96 opacity-0"
+                    >
+                        <div v-show="showWorks">
+                            <h1 class="text-right">My </h1>
+                            <h1 class="text-right">recent </h1>
+                            <h1 class="text-right">works</h1>
+                        </div>
+                    </transition>
+                </div>
+
+
+            <transition
+                    enter-active-class="transition transform delay-200 duration-800 ease-out"
+                    enter-from-class="translate-x-full"
+                    leave-active-class="transition transform delay-100 duration-1000 ease-in"
+                    leave-to-class="translate-x-full"
+            >
+            <div v-show="showWorks" ref="slides" class="sm:mt-24 mt-4 left-0 w-full sm:mb-0 absolute duration-500">
+                <div class="sm:w-2/3 lg:w-1/2 left-0 w-10/12 h-full absolute" v-for="(work, id) in works" :key="work">
+                    <div class="relative">
+                        <button @click="handleLeftBtn(work)" v-show="work.active && work.id !== 0"
+                            class="sm:-left-16 -left-9 -ml-2 p-2 z-10 cursor-pointer top-1/2 absolute transform -translate-y-1/2 rotate-180">
                             <ArrowR />
-                        </button>       
+                        </button>
                         <h1 class="rotateH1">{{id + 1}}. {{work.title}}</h1>
-                        <div class="pr-20">
-                            <img class="shadow-md" :src="require(`@/assets/${work.img}`)" alt="">    
-                        </div>                        
+                        <div class="sm:pr-20 pr-14">
+                            <router-link :to="work.link" >
+                                <img class="shadow-md" :src="require(`@/assets/${work.img}`)" alt="">
+                            </router-link>
+                        </div>
+
                         <p class="absolute text-right w-full pr-20 text-xs mt-2">{{work.tags}}</p>
-                        <button @click="handleRightBtn(work)" v-show="work.active && work.id !== works.length - 1" 
-                            class="right-10 p-2 z-10 cursor-pointer transform -translate-y-1/2 top-1/2 absolute">
+                        <button @click="handleRightBtn(work)" v-show="work.active && work.id !== works.length - 1"
+                            class="sm:right-10 right-6 p-2 z-10 cursor-pointer transform -translate-y-1/2 top-1/2 absolute">
                             <ArrowR />
-                        </button>          
+                        </button>
                     </div>
-                </div>                
+                </div>
             </div>
+            </transition>
+
         </div>
     </div>
 </template>
@@ -39,85 +81,111 @@ export default {
     components: {ArrowR},
     setup() {
         const works = ref([
-            {id: 0, active: true, img: 'stone-electro/stone-electro.png', title: 'Stone Electro', tags: 'Design / Front End'},
-            {id: 1, active: false, img: 'news-site/news-site.png', title: 'News Site', tags: 'Design / Full Stack'},
-            {id: 2, active: false, img: 'portfolio/portfolio.png', title: 'Portfolio', tags: 'Design / Full Stack'},
+            {id: 0, active: true, img: 'stone-electro/stone-electro.png', title: 'Stone Electro', tags: 'Design / Front End', link: 'stone-electro'},
+            {id: 1, active: false, img: 'news-site/news-site.png', title: 'News Site', tags: 'Design / Full Stack', link: 'news-site'},
+            {id: 2, active: false, img: 'portfolio/portfolio.png', title: 'Portfolio', tags: 'Design / Full Stack', link: 'portfolio'},
         ])
         const slides = ref(null)
         const slideWidth = ref(0)
+        const worksWrapper = ref(null)
+        const showWorks = ref(false)
 
         const handleRightBtn = (work) => {
-            // console.log(work.id)
             if  (works.value[work.id + 1]) {
                 works.value.map(work => work.active = false)
                 works.value[work.id + 1].active = true
                 slides.value.style.left = slides.value.offsetLeft - slideWidth.value + 'px'
-                // slides.value.style.transform = `translateX(-${slideWidth.value}px)`
             }
-
-            // slides.value.style.transform = `translateX(-${slideWidth.value}px)`
         }
 
-        const handleLeftBtn = (work) => {            
+        const handleLeftBtn = (work) => {
             if (works.value[work.id - 1]) {
                 works.value.map(work => work.active = false)
-                slides.value.style.left = slides.value.offsetLeft + slideWidth.value + 'px'                
+                slides.value.style.left = slides.value.offsetLeft + slideWidth.value + 'px'
                 works.value[work.id - 1].active = true
             }
         }
 
         const setSlideWidths = () => {
-            slideWidth.value = slides.value.children[0].offsetWidth
-            const slidesChildren = [...slides.value.children]
+            if (slides.value) {
+                slideWidth.value = slides.value.children[0].offsetWidth
+                const slidesChildren = [...slides.value.children]
 
-            slidesChildren.forEach((slide, index) => {
-                slide.style.left = slideWidth.value * index + 'px'
-            })
+                slidesChildren.forEach((slide, index) => {
+                    slide.style.left = slideWidth.value * index + 'px'
+                })
+            }
+        }
+
+        const setWidthIsBigger = () => {
+            if (innerWidth > innerHeight && innerWidth >= 1024) {
+                worksWrapper.value.classList.add('h-screen');
+                worksWrapper.value.classList.remove('h-vh');
+            }
+            else {
+                worksWrapper.value.classList.add('h-vh');
+                worksWrapper.value.classList.remove('h-screen');
+            }
+        }
+
+        const setActiveSlideDefault = () => {
+            works.value.map(work => work.active = false)
+            works.value[0].active = true
+            slides.value.style.left = '0px'
+        }
+
+        const setShowWorks = () => {
+            const cond1 = scrollY > worksWrapper.value.offsetTop - worksWrapper.value.offsetHeight * 0.66
+            const cond2 = scrollY < worksWrapper.value.offsetTop + worksWrapper.value.offsetHeight * 0.66
+            showWorks.value = cond1 && cond2
         }
 
         onMounted(() => {
-            setSlideWidths()            
+            // setSlideWidths()
+
+            setWidthIsBigger()
             window.addEventListener('resize', e => {
-                setSlideWidths()                
+                setSlideWidths()
+                setWidthIsBigger()
+                setActiveSlideDefault()
+
+            }, false)
+
+            window.addEventListener('scroll', () => {
+                setShowWorks()
+                setSlideWidths()
             })
         })
 
         onUnmounted(() => {
-            window.removeEventListener('resize', e => {
-                setSlideWidths()                
-            })
+            window.removeEventListener('scroll', setShowWorks)
+            window.removeEventListener('scroll', setSlideWidths)
+            window.removeEventListener('resize', setSlideWidths)
+            window.removeEventListener('resize', setWidthIsBigger)
         })
 
-        return {works, slides, handleRightBtn, handleLeftBtn}
+        return {works, slides, handleRightBtn, handleLeftBtn, worksWrapper, showWorks}
     }
 }
 </script>
 
 <style scope>
-.shh {
-    box-shadow: 0px 39px 31px -41px rgba(34, 60, 80, 1) inset;
+.h-76vw {
+    height: 76vw;
 }
 .bg-font-size{
     font-size: 18vw;
 }
-.left-10m {
-    left: 12%;
-}
 .rotateH1 {
-    letter-spacing: 5px;
+    letter-spacing: 0.38vw;
     transform-origin:0 50%;
     transform: rotate(90deg) translate(-50%, 50%);
     position:absolute;
+    height: 20px;
     left: -4px;
     top:0;
     bottom:0;
     margin:auto;
-    font-size: 1.3em;
-}
-.h-600 {
-    height: 600px;
-}
-.-right-6vw {
-    right: 0px;
+    font-size:calc(8px + 0.7vw);;
 }
 </style>

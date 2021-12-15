@@ -1,8 +1,9 @@
-<template>
-  <div class="text-graphiteBlack font-sans">
+<template>  
+  <div class="text-graphiteBlack font-sans bg-blueGray">   
+    <router-view></router-view>
     <Navs/>
-    <Main/>
-  </div>
+    <!-- <Main/> -->
+  </div>  
 </template>
 <script>
 import Main from '@/views/Main'
@@ -14,9 +15,6 @@ export default {
 <style>
   .width {
     width: 1640px;
-  }
-  html {
-    scroll-behavior: smooth;
   }
   body::-webkit-scrollbar {
     padding: 20px;

@@ -1,46 +1,71 @@
 <template>
-  <div id="about" class="h-screen bg-blueGray flex flex-col justify-center overflow-hidden relative">    
-    <div class="text-600 absolute transform -rotate-30 font-black opacity-5 -bottom-56 uppercase">
-      About
+    <div ref="about" id="about"
+         class="lg:h-screen px-2 lg:mb-0 sm:mb-12 mb-4 lg:mt-0 bg-blueGray flex flex-col justify-start lg:justify-center overflow-hidden relative">
+            <div class="text-600 absolute transform -rotate-30 font-black opacity-5 bottom-32 uppercase">
+                <transition
+                        enter-active-class="transition transform delay-500 duration-1000 ease-out"
+                        enter-from-class="translate-x-full"
+                        leave-active-class="transition transform delay-100 duration-700 ease-out"
+                        leave-to-class="translate-x-full"
+                >
+                    <div class="absolute" v-show="showAbout">About</div>
+                </transition>
+            </div>
+        <transition
+                enter-active-class="transition transform duration-700 ease-out"
+                enter-from-class="-translate-y-full opacity-0 scale-150"
+                leave-active-class="transition transform duration-500 ease-in"
+                leave-to-class="-translate-y-full opacity-0 scale-150"
+        >
+        <div v-if="showAbout" class="lg:absolute left-24 2xl:left-12p">
+            <ResponsibleTXT class="2xl:w-44vw lg:w-44vw w-full py-8 sm:w-full"/>
+            <div class="xl:text-xl text-md mb-8 lg:mb-8">
+                <p>I have been creating in <span class="italic">HTML</span>, <span class="italic">CSS</span>,</p>
+                <p><span class="italic">Javascript</span> websites for over 4</p>
+                <p>years. At the moment, I enjoy</p>
+                <p>working with <span class="font-semibold">Vue 3</span></p>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" width="133.226" height="73.603" viewBox="0 0 133.226 73.603">
+                <path id="Path_73" data-name="Path 73" d="M0-106.868,73.6,26.358H0Z"
+                      transform="translate(26.358) rotate(90)" fill="#393835" opacity="0.33"/>
+            </svg>
+        </div>
+        </transition>
     </div>
-    <div class="absolute left-15">
-      <div class="font-black font-size-line-height uppercase">
-        <h1>Responsible and</h1>
-        <h1>well-organized</h1> 
-        <h1>worker with</h1>
-        <h1>a high level</h1>
-        <h1>of attention </h1>
-        <h1>to detail</h1>
-      </div>
-      <div class="left-15 text-22 my-8">
-        <p>I have been creating in <span class="italic">HTML</span>, <span class="italic">CSS</span>,</p>
-        <p> <span class="italic">Javascript</span> websites for over 4</p>
-        <p>years. At the moment, I enjoy</p>
-        <p>working with <span class="font-semibold">Vue 3</span></p>
-      </div>
-      <svg xmlns="http://www.w3.org/2000/svg" width="133.226" height="73.603" viewBox="0 0 133.226 73.603">
-        <path id="Path_73" data-name="Path 73" d="M0-106.868,73.6,26.358H0Z" transform="translate(26.358) rotate(90)" fill="#393835" opacity="0.33"/>
-      </svg>
-    </div>
-  </div>
 </template>
 
 <script>
+import ResponsibleTXT from './images/ResponsibleTXT.vue'
+import { onMounted, onUnmounted, ref } from "vue";
+import logo from "./icons/Logo";
+
 export default {
-  name: 'About',
+    name: 'About',
+    components: {ResponsibleTXT},
+    setup() {
+        const showAbout = ref(false)
+        const about = ref(null)
+
+        const setShowAbout = () => {
+            const cond1 = scrollY > about.value.offsetTop - about.value.offsetHeight * 0.66
+            const cond2 = scrollY < about.value.offsetTop + about.value.offsetHeight * 0.66
+            showAbout.value = cond1 && cond2
+        }
+
+        onMounted(() => {
+            window.addEventListener('scroll', setShowAbout)
+        })
+        onUnmounted(() => {
+            window.removeEventListener('scroll', setShowAbout)
+        })
+
+        return {showAbout, about}
+    }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.font-size-line-height {
-  font-size: 88px;
-  line-height: 67px;
-}
-.text-22 {
-  font-size: 22px;
-}
 .text-600 {
-  font-size: 600px;
+    font-size: 600px;
 }
 </style>
