@@ -1,37 +1,36 @@
-<template>  
-  <div class="text-graphiteBlack font-sans bg-blueGray">   
-    <router-view></router-view>
-    <Navs/>
-    <!-- <Main/> -->
-  </div>  
+<template>
+    <div class="text-graphiteBlack font-sans bg-blueGray">
+        <router-view></router-view>
+        <Navs/>
+        <!-- <Main/> -->
+    </div>
 </template>
 <script>
 import Main from '@/views/Main'
 import Navs from '@/components/Navs'
+
 export default {
-  components: {Main, Navs}
+    components: {Main, Navs}
 }
 </script>
 <style>
-  .width {
-    width: 1640px;
-  }
-  body::-webkit-scrollbar {
+body::-webkit-scrollbar {
     padding: 20px;
-    background-color:  #393835;
+    background-color: #393835;
     width: 0.6em;
-  }
-  
-  body::-webkit-scrollbar-thumb {
-    background-color: #5c5b59;
-  }
-  ::-moz-selection { 
-    color:  #FAE6CC;
-    background: #EF5A38;
-  }
+}
 
-  ::selection {
+body::-webkit-scrollbar-thumb {
+    background-color: #5c5b59;
+}
+
+::-moz-selection {
     color: #FAE6CC;
-    background:  #EF5A38;
-  }
+    background: #EF5A38;
+}
+
+::selection {
+    color: #FAE6CC;
+    background: #EF5A38;
+}
 </style>

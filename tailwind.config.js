@@ -23,6 +23,7 @@ module.exports = {
                 'sm': '0.30'
             },
             height: {
+                '2vh': 'calc((-3vh + 20vw) * 9)',
                 'vh': '100vw',
             },
             width: {

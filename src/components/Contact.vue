@@ -1,5 +1,5 @@
 <template>
-    <div ref="contact" id="contact" class="sm:h-screen px-2 flex sm:mt-0 mt-20 justify-center items-center flex-col">
+    <div ref="contact" id="contact" class="sm:h-screen sm:mt-0 mt-16 mb-36 sm:mb-0 px-2 flex justify-center items-center flex-col">
         <h1 ref="title" class="font-black opacity-90 text-5xl sm:text-8xl">EMAIL ME</h1>
         <div ref="wrapper" class="flex justify-center items-center flex-col">
             <div @click="$refs.nameRef.focus()" class="w-full mt-16 relative">
@@ -49,18 +49,19 @@
             </textarea>
 
             <transition
-                    enter-active-class="transition delay-500 transform duration-1000 ease-out"
+                    enter-active-class="transition delay-300 transform duration-1000 ease-out"
                     enter-from-class="translate-y-full opacity-0"
                     leave-active-class="transition transform duration-800 ease-in"
                     leave-to-class="translate-y-full opacity-0"
             >
-                <div v-if="showBtn" class="absolute bottom-40">
+                <div v-if="showBtn" class="absolute bottom-0 sm:bottom-40">
                     <div
                             @mouseover="$refs.backOrangeRect.style.transform = 'translateY(16px)'"
                             @mouseleave="$refs.backOrangeRect.style.transform = 'translateY(0px)'"
-                            class="bg-antiqueWhite transform sm:scale-100 scale-75 sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 relative overflow-hidden cursor-pointer shadow-md">
+                            class="bg-antiqueWhite transform sm:scale-100 scale-50 sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 relative overflow-hidden cursor-pointer shadow-md">
                         <div class="transform -rotate-30">
-                            <div ref="backOrangeRect" class=" duration-200 top-12 absolute h-72 w-72 bg-orangeRed"></div>
+                            <div ref="backOrangeRect"
+                                 class=" duration-200 top-12 absolute h-72 w-72 bg-orangeRed"></div>
                         </div>
 
                         <h1 class="font-bold opacity-80 uppercase leading-none left-0 z-10 absolute text-5xl h-full w-full flex justify-center items-center">
@@ -68,9 +69,7 @@
                         </h1>
                     </div>
                 </div>
-
             </transition>
-
         </div>
     </div>
 </template>
@@ -90,11 +89,14 @@ export default {
         const contact = ref(null)
 
         const setWrapperWidth = () => {
-            wrapper.value.style.width = title.value.offsetWidth + 'px'
+            if (wrapper.value) {
+                wrapper.value.style.width = title.value.offsetWidth + 'px'
+            }
         }
 
         const setShowBtn = () => {
-            showBtn.value = scrollY > contact.value.offsetTop - contact.value.offsetHeight * 0.33;
+            const multiplier = innerWidth < 1024 ? 1.2 : 0.66
+            showBtn.value = scrollY > contact.value.offsetTop - contact.value.offsetHeight * multiplier
         }
 
         onMounted(() => {
