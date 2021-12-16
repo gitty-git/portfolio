@@ -16,12 +16,12 @@
 
                         <div class="xl:mb-12 mb-6 xl:text-md text-sm xl:text-base">
                             <h2 class="font-bold text-lg mb-4">Client request:</h2>
-                            <p class="mb-4">Create a minimalistic website design, make a layout.</p>
+                            <p class="mb-4">Create a minimalistic website design, make a layout, design icons.</p>
                         </div>
 
                         <div class="xl:text-md text-sm xl:text-base">
                             <h2 class="font-bold text-lg mb-4">Used in this project:</h2>
-                            <p class="mb-4">AdobeXD, Vue 2, Tailwind CSS</p>
+                            <p class="mb-4">Adobe Illustrator, XD; Vue 2; Tailwind CSS.</p>
                         </div>
                     </div>
                 </div>

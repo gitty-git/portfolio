@@ -10,7 +10,7 @@
                 <div ref="stripes" class="absolute w-full h-screen">
                     <div class="z-0 absolute top-1/2 xl:mt-24 -mt-24 2xl:top-1/2 -right-3/4 transform -rotate-30">
                         <transition
-                                enter-active-class="transition delay-500 transform duration-1000 ease-in"
+                                enter-active-class="transition delay-300 transform duration-1000 ease-in"
                                 enter-from-class="translate-x-full opacity-0"
                                 appear
                         >
@@ -18,7 +18,7 @@
                         </transition>
 
                         <transition
-                                enter-active-class="transition delay-500 transform duration-1000 ease-in"
+                                enter-active-class="transition delay-300 transform duration-1000 ease-in"
                                 enter-from-class="-translate-x-full opacity-0"
                                 appear
                         >
@@ -26,7 +26,7 @@
                         </transition>
 
                         <transition
-                                enter-active-class="transition delay-500 transform duration-1000 ease-in"
+                                enter-active-class="transition delay-300 transform duration-1000 ease-in"
                                 enter-from-class="translate-x-full opacity-0"
                                 appear
                         >
@@ -39,8 +39,8 @@
             <div class="w-full top-0 lg:absolute">
                 <div class="lg:h-screen px-2 lg:absolute sca left-24 2xl:left-12p flex flex-col lg:justify-center z-10">
                     <transition
-                            enter-active-class="transition transform duration-800 ease-out"
-                            enter-from-class="rotate-15 translate-x-full translate-y-1/4 opacity-0"
+                            enter-active-class="transition delay-200 transform duration-800"
+                            enter-from-class="rotate-15 translate-x-full  opacity-0"
                             enter-to-class="scale-100"
                             appear
                     >
@@ -48,7 +48,7 @@
                             <!-- HELLO -->
                             <transition
                                     enter-active-class="transition delay-500 duration-1000 transform ease-in"
-                                    enter-from-class="opacity-10"
+                                    enter-from-class="opacity-20"
                                     appear
                             >
                                 <div ref="hello" class="z-20 -ml-vw w-full font-black">
@@ -68,7 +68,7 @@
 
                 <!-- HEAD -->
                 <transition
-                        enter-active-class="transition transform duration-700 ease-out"
+                        enter-active-class="transition transform duration-800"
                         enter-from-class="rotate-30 translate-x-full translate-y-1/3 opacity-0"
                         appear
                 >

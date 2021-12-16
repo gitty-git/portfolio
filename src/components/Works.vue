@@ -25,10 +25,10 @@
             <h1 class="sm:hidden block text-xl opacity-90 ml-16 uppercase font-black">My recent works</h1>
             <div class="text-6xl sm:block hidden -mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
                 <transition
-                        enter-active-class="transition delay-200 transform duration-800 ease-out"
-                        enter-from-class="-translate-x-96 opacity-0"
-                        leave-active-class="transition transform duration-800 ease-in"
-                        leave-to-class="-translate-x-96 opacity-0"
+                        enter-active-class="transition delay-500 transform duration-300 ease-in"
+                        enter-from-class="-translate-x-96 opacity-0 -rotate-15"
+                        leave-active-class="transition transform duration-300 ease-in"
+                        leave-to-class="-translate-x-96 opacity-0 -rotate-15"
                 >
                     <div v-show="showWorks">
                         <h1 class="text-right">My </h1>
@@ -41,9 +41,9 @@
 
             <transition
                     enter-active-class="transition transform delay-200 duration-800 ease-out"
-                    enter-from-class="translate-x-full opacity-0"
+                    enter-from-class="translate-x-full skew-x-30 opacity-0"
                     leave-active-class="transition transform delay-100 duration-1000 ease-in"
-                    leave-to-class="translate-x-full opacity-0"
+                    leave-to-class="translate-x-full -skew-x-30 opacity-0"
             >
                 <div v-show="showWorks" ref="slides" class="sm:mt-24 mt-4 left-0 w-full sm:mb-0 absolute duration-500">
                     <div class="sm:w-2/3 lg:w-1/2 left-0 w-10/12 h-full absolute" v-for="(work, id) in works"

@@ -39,8 +39,13 @@ module.exports = {
                 graphiteBlack: '#393835',
                 antiqueWhite: '#FAE6CC'
             },
+            skew: {
+                '30': '30deg',
+                '-30': '-30deg',
+            },
             rotate: {
                 '15': '15deg',
+                '-15': '-15deg',
                 '-30': '-30deg',
                 '30': '30deg',
                 '-60': '-60deg',
