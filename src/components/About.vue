@@ -6,16 +6,16 @@
                     enter-active-class="transition transform delay-300 duration-1000 ease-out"
                     enter-from-class="translate-x-full opacity-0"
                     leave-active-class="transition transform duration-700 ease-in"
-                    leave-to-class="translate-x-full opacity-0"
+                    leave-to-class="-translate-x-full opacity-0"
             >
                 <div class="absolute opacity-75" v-show="showAbout">About</div>
             </transition>
         </div>
         <transition
                 enter-active-class="transition transform duration-700 ease-out"
-                enter-from-class="-translate-y-full opacity-0 scale-150"
+                enter-from-class="translate-y-full opacity-0 scale-150 rotate-30"
                 leave-active-class="transition transform duration-500 ease-in"
-                leave-to-class="-translate-y-full opacity-0 scale-150"
+                leave-to-class="-translate-y-full opacity-0 scale-150 -rotate-30"
         >
             <div v-if="showAbout" class="lg:absolute left-24 2xl:left-12p">
                 <ResponsibleTXT class="2xl:w-44vw lg:w-44vw w-full py-8 sm:w-full"/>

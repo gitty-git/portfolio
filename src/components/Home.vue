@@ -37,10 +37,11 @@
             </transition>
 
             <div class="w-full top-0 lg:absolute">
-                <div class="lg:h-screen px-2 lg:absolute left-24 2xl:left-12p flex flex-col lg:justify-center z-10">
+                <div class="lg:h-screen px-2 lg:absolute sca left-24 2xl:left-12p flex flex-col lg:justify-center z-10">
                     <transition
-                            enter-active-class="transition transform duration-600 ease-in"
+                            enter-active-class="transition transform duration-800 ease-out"
                             enter-from-class="rotate-15 translate-x-full translate-y-1/4 opacity-0"
+                            enter-to-class="scale-100"
                             appear
                     >
                         <div>
@@ -51,7 +52,7 @@
                                     appear
                             >
                                 <div ref="hello" class="z-20 -ml-vw w-full font-black">
-                                    <Hello class="lg:w-44vw w-full flex justify-start"/>
+                                    <Hello class="lg:w-44vw flex justify-start"/>
                                 </div>
                             </transition>
 
@@ -67,8 +68,8 @@
 
                 <!-- HEAD -->
                 <transition
-                        enter-active-class="transition transform duration-500 ease-in"
-                        enter-from-class="rotate-30 translate-x-full translate-y-1/4 opacity-0"
+                        enter-active-class="transition transform duration-700 ease-out"
+                        enter-from-class="rotate-30 translate-x-full translate-y-1/3 opacity-0"
                         appear
                 >
                     <div class="z-10 lg:h-screen transform lg:fixed block overflow-hidden flex items-center flex-col

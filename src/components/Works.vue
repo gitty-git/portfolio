@@ -14,7 +14,7 @@
                     enter-active-class="transition delay-500 transform duration-700 ease-out"
                     enter-from-class="translate-x-full opacity-0"
                     leave-active-class="transition transform duration-800 ease-in"
-                    leave-to-class="translate-x-full opacity-0"
+                    leave-to-class="-translate-x-full opacity-0"
             >
                 <div class="absolute invisible opacity-50 lg:visible" v-if="showWorks">WORKS</div>
             </transition>
