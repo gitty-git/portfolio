@@ -14,6 +14,18 @@ export default {
 }
 </script>
 <style>
+textarea {
+    resize: none !important;
+}
+textarea::-webkit-scrollbar {
+    background-color: #677d81;
+    width: 0.3em;
+    cursor: pointer;
+}
+textarea::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    background-color: #404140;
+}
 body::-webkit-scrollbar {
     padding: 20px;
     background-color: #393835;
