@@ -51,11 +51,20 @@
             <transition
                     enter-active-class="transition delay-300 transform duration-1000 ease-out"
                     enter-from-class="translate-y-full opacity-0"
-                    leave-active-class="transition transform duration-800 ease-in"
+                    leave-active-class="transition transform duration-200 ease-in"
                     leave-to-class="translate-y-full opacity-0"
             >
                 <div v-if="showBtn" class="absolute bottom-0 sm:bottom-40">
+                    <transition
+                            mode="out-in"
+                            enter-active-class="transition transform duration-200 ease-out"
+                            enter-from-class="scale-150 opacity-0"
+                            leave-active-class="transition transform duration-200 ease-in"
+                            leave-to-class="scale-150 opacity-0"
+                    >
                     <div
+                            @click.prevent="load"
+                            v-if="!loading"
                             @mouseover="$refs.backOrangeRect.style.transform = 'translateY(16px)'"
                             @mouseleave="$refs.backOrangeRect.style.transform = 'translateY(0px)'"
                             class="bg-antiqueWhite transform sm:scale-100 scale-50 sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 relative overflow-hidden cursor-pointer shadow-md">
@@ -68,6 +77,20 @@
                             Submit
                         </h1>
                     </div>
+                    <div class="flex justify-center items-center transform sm:scale-100 scale-50 sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 text-2xl"
+                         v-else-if="thankYou">
+                        Message sent!
+                    </div>
+                    <div class="flex "
+                         v-else-if="loading">
+                        <svg class="w-8 animate-spin" xmlns="http://www.w3.org/2000/svg" width="76" height="76" viewBox="0 0 76 76">
+                            <g id="Group_286" data-name="Group 286" transform="translate(-847 -3011)">
+                                <path id="Subtraction_66" data-name="Subtraction 66" d="M-2069,76a37.765,37.765,0,0,1-14.792-2.986,37.875,37.875,0,0,1-12.079-8.144,37.874,37.874,0,0,1-8.144-12.079A37.763,37.763,0,0,1-2107,38a37.762,37.762,0,0,1,2.986-14.791,37.875,37.875,0,0,1,8.144-12.079,37.874,37.874,0,0,1,12.079-8.144A37.763,37.763,0,0,1-2069,0a37.762,37.762,0,0,1,14.792,2.986,37.875,37.875,0,0,1,12.079,8.144,37.875,37.875,0,0,1,8.144,12.079A37.762,37.762,0,0,1-2031,38a37.763,37.763,0,0,1-2.986,14.791,37.876,37.876,0,0,1-8.144,12.079,37.876,37.876,0,0,1-12.079,8.144A37.763,37.763,0,0,1-2069,76Zm0-67a29.033,29.033,0,0,0-29,29,29.033,29.033,0,0,0,29,29,29.033,29.033,0,0,0,29-29A29.033,29.033,0,0,0-2069,9Z" transform="translate(2954 3011)" fill="#393835" opacity="0.38"/>
+                                <path id="Subtraction_69" data-name="Subtraction 69" d="M-2080.13,80.61h0a37.765,37.765,0,0,1-8.346-12.57,37.862,37.862,0,0,1-2.783-14.3,37.891,37.891,0,0,1,2.782-14.3,37.767,37.767,0,0,1,8.348-12.57,37.782,37.782,0,0,1,12.571-8.348,37.882,37.882,0,0,1,14.3-2.782v9.013h0a28.8,28.8,0,0,0-20.5,8.48,29.034,29.034,0,0,0,0,41.012l-6.363,6.363Z" transform="translate(2938.26 2995.26)" fill="#393835"/>
+                            </g>
+                        </svg>
+                    </div>
+                    </transition>
                 </div>
             </transition>
         </div>
@@ -76,6 +99,8 @@
 
 <script>
 import { onMounted, onUnmounted, ref } from 'vue'
+import { collection, addDoc, Timestamp } from "firebase/firestore"
+import { db } from "../firebase/config";
 
 export default {
     setup() {
@@ -87,6 +112,8 @@ export default {
         const message = ref('')
         const showBtn = ref(false)
         const contact = ref(null)
+        const loading = ref(false)
+        const thankYou = ref(false)
 
         const setWrapperWidth = () => {
             if (wrapper.value) {
@@ -97,6 +124,31 @@ export default {
         const setShowBtn = () => {
             const multiplier = innerWidth < 1024 ? 1.2 : 0.66
             showBtn.value = scrollY > contact.value.offsetTop - contact.value.offsetHeight * multiplier
+        }
+
+        const load = async () => {
+            try {
+                loading.value = true
+                const docRef = await addDoc(collection(db, "messages"), {
+                    name: name.value,
+                    email: email.value,
+                    message: message.value,
+                    date: Timestamp.fromDate(new Date(Date.now())),
+                })
+                if (docRef) {
+                    thankYou.value = true
+                    name.value = ''
+                    email.value = ''
+                    message.value = ''
+                    setTimeout(() => {
+                        thankYou.value = false
+                        loading.value = false
+                    }, 5000)
+                }
+            }
+            catch (err) {
+                console.log(err)
+            }
         }
 
         onMounted(() => {
@@ -113,7 +165,7 @@ export default {
             window.removeEventListener('scroll', setShowBtn)
         })
 
-        return {title, wrapper, active, name, email, message, setShowBtn, showBtn, contact}
+        return {title, wrapper, active, name, email, message, setShowBtn, showBtn, contact, load, loading, thankYou}
     }
 
 }
