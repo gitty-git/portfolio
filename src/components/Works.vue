@@ -25,7 +25,7 @@
             <h1 class="sm:hidden block text-xl opacity-90 ml-16 uppercase font-black">My recent works</h1>
             <div class="text-6xl sm:block hidden -mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
                 <transition
-                        enter-active-class="transition delay-500 transform duration-300 ease-in"
+                        enter-active-class="transition delay-500 transform duration-700"
                         enter-from-class="-translate-x-96 opacity-0 -rotate-15"
                         leave-active-class="transition transform duration-300 ease-in"
                         leave-to-class="-translate-x-96 opacity-0 -rotate-15"
@@ -40,7 +40,7 @@
 
 
             <transition
-                    enter-active-class="transition transform delay-200 duration-800 ease-out"
+                    enter-active-class="transition transform delay-300 duration-800 ease-out"
                     enter-from-class="translate-x-full skew-x-30 opacity-0"
                     leave-active-class="transition transform delay-100 duration-1000 ease-in"
                     leave-to-class="translate-x-full -skew-x-30 opacity-0"
