@@ -172,11 +172,14 @@ export default {
         const messageErr = ref(null)
 
         const setWrapperWidth = () => {
-            if (wrapper.value) {
+            if (wrapper.value && innerWidth > 450) {
                 wrapper.value.style.width = title.value.offsetWidth + 'px'
             }
+            else {
+                wrapper.value.style.width = '100%'
+                wrapper.value.classList.add('px-2')
+            }
         }
-
         const setShowBtn = () => {
             const multiplier = innerWidth < 1024 ? 1.2 : 0.66
             showBtn.value = scrollY > contact.value.offsetTop - contact.value.offsetHeight * multiplier

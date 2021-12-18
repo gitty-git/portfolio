@@ -1,6 +1,6 @@
 <template>
     <div ref="about" id="about"
-         class="lg:h-screen h-2vh sm:h-96 px-2 lg:mb-0 sm:mb-12 mb-4 lg:mt-0 bg-blueGray flex flex-col justify-start lg:justify-center overflow-hidden relative">
+         class="sm:h-screen h-2vh lg:z-0 px-2 lg:mb-0 mb-4 lg:mt-0 bg-blueGray flex flex-col justify-center overflow-hidden relative">
         <div class="text-600 absolute transform -rotate-30 font-black opacity-5 bottom-32 uppercase">
             <transition
                     enter-active-class="transition transform delay-300 duration-1000 ease-out"

@@ -1,13 +1,16 @@
 <template>
     <div ref="whiteBg"
-         class="sm:hidden h-76vw -mt-14 w-long sm:mt-0 -left-1/2 absolute transform -rotate-30 bg-antiqueWhite"></div>
-
-    <div ref="worksWrapper" id="works"
-         class="sm:ml-0 z-20 h-72 -mt-6 ml-4 w-full sm:px-0 px-5 sm:left-0 sm:mt-0
-        transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite sm:overflow-hidden sm:relative"
+         class="sm:hidden h-76vw -mt-14 w-long sm:mt-0 -left-1/2 absolute transform -rotate-30 bg-antiqueWhite"
     >
-        <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-10"></div>
+    </div>
 
+    <div
+            ref="worksWrapper" id="works"
+            class="sm:ml-0 z-20 h-72 -mt-6 ml-4 w-full sm:px-0 px-5 sm:left-0 sm:mt-0
+                transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
+                sm:overflow-hidden sm:relative"
+    >
+        <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-20"></div>
 
         <div class="bg-font-size opacity-5 font-black mb-0 absolute left-1/3 bottom-1/3 transform sm:-rotate-30">
             <transition
@@ -21,7 +24,7 @@
         </div>
 
 
-        <div class="sm:left-0 xl:ml-24 ml-8 lg:mt-80 xl:mt-48 2xl:mt-24 lg:-top-80 md:top-12 ml-2 absolute w-full transform sm:-rotate-30">
+        <div class="sm:left-0 xl:ml-24 ml-8 lg:mt-64 xl:mt-48 2xl:mt-24 lg:-top-80 md:top-12 ml-2 absolute w-full transform sm:-rotate-30">
             <h1 class="sm:hidden block text-xl opacity-90 ml-16 uppercase font-black">My recent works</h1>
             <div class="text-6xl sm:block hidden -mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
                 <transition

@@ -40,7 +40,7 @@
         </router-link>
     </transition>
 
-    <div class="w-full h-10 fixed right-0 bottom-0 blur-4px lg:invisible visible"></div>
+    <div class="z-50 w-full h-10 fixed right-0 bottom-0 blur-4px lg:invisible visible"></div>
 
     <div class="z-50 uppercase text-sm font-black lg:invisible visible fixed bottom-0 right-0 h-10 w-full flex items-center justify-between px-2">
         <router-link to="/#home">
