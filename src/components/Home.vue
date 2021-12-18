@@ -73,7 +73,7 @@
                         appear
                 >
                     <div
-                            class="z-10 lg:h-screen transform lg:mr-0 sm:-mr-16 sm:-mb-24 lg:mb-0 -mr-8
+                            class="z-10 lg:h-screen transform mr-0 sm:-mr-16 lg:mr-0 sm:-mb-36 lg:mb-0 -mr-8
                                 lg:fixed block overflow-hidden flex items-center flex-col
                                 justify-end 2xl:right-16 xl:-right-4 -right-10 bottom-0"
                             ref="me"

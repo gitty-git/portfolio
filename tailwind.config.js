@@ -17,6 +17,7 @@ module.exports = {
                 '12vw': '1.2vw'
             },
             inset: {
+                '20vh': '24px',
                 '12p': '12%'
             },
             scale: {

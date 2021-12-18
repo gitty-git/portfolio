@@ -47,11 +47,7 @@ export default {
         const about = ref(null)
 
         const setShowAbout = () => {
-            let multiplier = 0.66
-            if (innerWidth <= 768) {
-                multiplier = 1.2
-            }
-            const cond1 = scrollY > about.value.offsetTop - about.value.offsetHeight * multiplier
+            const cond1 = scrollY > about.value.offsetTop - about.value.offsetHeight * 0.66
             const cond2 = scrollY < about.value.offsetTop + about.value.offsetHeight * 0.66
 
             showAbout.value = cond1 && cond2

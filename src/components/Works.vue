@@ -1,18 +1,17 @@
 <template>
-    <div ref="whiteBg"
-         class="sm:hidden h-76vw -mt-14 w-long sm:mt-0 -left-1/2 absolute transform -rotate-30 bg-antiqueWhite"
-    >
-    </div>
+<!--    <div ref="whiteBg"-->
+<!--         class="sm:hidden h-76vw -mt-14 w-long sm:mt-0 -left-1/2 absolute transform -rotate-30 bg-antiqueWhite"-->
+<!--    >-->
+<!--    </div>-->
 
     <div
             ref="worksWrapper" id="works"
-            class="sm:ml-0 z-20 h-72 -mt-6 ml-4 w-full sm:px-0 px-5 sm:left-0 sm:mt-0
-                transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
+            class="z-20 w-full -my-12 sm:my-0 transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
                 sm:overflow-hidden sm:relative"
     >
         <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-20"></div>
 
-        <div class="bg-font-size opacity-5 font-black mb-0 absolute left-1/3 bottom-1/3 transform sm:-rotate-30">
+        <div class="bg-font-size opacity-5 font-black mb-0 absolute left-1/3 bottom-1/4 transform sm:-rotate-30">
             <transition
                     enter-active-class="transition delay-500 transform duration-700 ease-out"
                     enter-from-class="translate-x-full opacity-0"
@@ -23,10 +22,10 @@
             </transition>
         </div>
 
+        <div class="xl:ml-24 sm:-top-1/4 sm:mt-32 md:mt-48 lg:mt-32 2xl:mt-6 left-1/4 sm:left-0 absolute w-full transform sm:-rotate-30">
+            <h1 class="sm:hidden block text-xl opacity-90 uppercase font-black">My recent works</h1>
 
-        <div class="sm:left-0 xl:ml-24 ml-8 lg:mt-64 xl:mt-48 2xl:mt-24 lg:-top-80 md:top-12 ml-2 absolute w-full transform sm:-rotate-30">
-            <h1 class="sm:hidden block text-xl opacity-90 ml-16 uppercase font-black">My recent works</h1>
-            <div class="text-6xl sm:block hidden -mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
+            <div class="xl:text-6xl text-4xl sm:block hidden -mx-4 xl:-mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
                 <transition
                         enter-active-class="transition delay-500 transform duration-700"
                         enter-from-class="-translate-x-96 opacity-0 -rotate-15"
@@ -48,7 +47,7 @@
                     leave-active-class="transition transform delay-100 duration-1000 ease-in"
                     leave-to-class="translate-x-full -skew-x-30 opacity-0"
             >
-                <div v-show="showWorks" ref="slides" class="sm:mt-24 mt-4 left-0 w-full sm:mb-0 absolute duration-500">
+                <div v-show="showWorks" ref="slides" class="xl:mt-24 mt-4 sm:mt-12 left-0 w-full absolute duration-500">
                     <div class="sm:w-2/3 lg:w-1/2 left-0 w-10/12 h-full absolute" v-for="(work, id) in works"
                          :key="work">
                         <div class="relative">
@@ -63,7 +62,7 @@
                                 </router-link>
                             </div>
 
-                            <p class="absolute text-right w-full pr-20 text-xs mt-2">{{ work.tags }}</p>
+                            <p class="absolute text-right w-full sm:pr-20 pr-14 text-xs mt-2">{{ work.tags }}</p>
                             <button @click="handleRightBtn(work)" v-show="work.active && work.id !== works.length - 1"
                                     class="sm:right-10 right-6 p-2 z-10 cursor-pointer transform -translate-y-1/2 top-1/2 absolute">
                                 <ArrowR/>
@@ -140,13 +139,18 @@ export default {
         }
         const setWidthIsBigger = () => {
             if (worksWrapper.value) {
-                if (innerWidth > innerHeight && innerWidth >= 1024) {
-                    worksWrapper.value.classList.add('h-screen');
-                    worksWrapper.value.classList.remove('h-vh');
+                // console.log(innerWidth / innerHeight)
+                if (innerHeight / innerWidth < 0.60) {
+                    worksWrapper.value.style.height = '100vh'
                 }
                 else {
-                    worksWrapper.value.classList.add('h-vh');
-                    worksWrapper.value.classList.remove('h-screen');
+                    if (innerWidth < 1024) {
+                        worksWrapper.value.style.height = `calc(${innerWidth * 0.8}px)`
+                    }
+                    else {
+                        worksWrapper.value.style.height = `calc(${innerWidth * 0.6}px)`
+                    }
+
                 }
             }
         }
@@ -201,7 +205,7 @@ export default {
     height: 76vw;
 }
 .bg-font-size {
-    font-size: 20vw;
+    font-size: 25vh;
 }
 .rotateH1 {
     letter-spacing: 0.38vw;
