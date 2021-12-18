@@ -11,7 +11,7 @@
     >
         <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-20"></div>
 
-        <div class="bg-font-size opacity-5 font-black mb-0 absolute left-1/3 bottom-1/4 transform sm:-rotate-30">
+        <div class="bg-font-size opacity-5 font-black absolute -mt-24 2xl:-mt-12 left-1/3 top-2/3 transform sm:-rotate-30">
             <transition
                     enter-active-class="transition delay-500 transform duration-700 ease-out"
                     enter-from-class="translate-x-full opacity-0"
@@ -22,7 +22,7 @@
             </transition>
         </div>
 
-        <div class="xl:ml-24 sm:-top-1/4 sm:mt-32 md:mt-48 lg:mt-32 2xl:mt-6 left-1/4 sm:left-0 absolute w-full transform sm:-rotate-30">
+        <div class="xl:ml-24 sm:-top-1/4 sm:mt-32 md:mt-48 lg:mt-32 2xl:mt-12 left-1/4 sm:left-0 absolute w-full transform sm:-rotate-30">
             <h1 class="sm:hidden block text-xl opacity-90 uppercase font-black">My recent works</h1>
 
             <div class="xl:text-6xl text-4xl sm:block hidden -mx-4 xl:-mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
@@ -205,7 +205,7 @@ export default {
     height: 76vw;
 }
 .bg-font-size {
-    font-size: 25vh;
+    font-size: 35vh;
 }
 .rotateH1 {
     letter-spacing: 0.38vw;
