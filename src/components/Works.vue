@@ -118,7 +118,6 @@ export default {
                 slides.value.style.left = slides.value.offsetLeft - slideWidth.value + 'px'
             }
         }
-
         const handleLeftBtn = (work) => {
             if (works.value[work.id - 1]) {
                 works.value.map(work => work.active = false)
@@ -126,7 +125,6 @@ export default {
                 works.value[work.id - 1].active = true
             }
         }
-
         const setSlideWidths = () => {
             if (slides.value) {
                 slideWidth.value = slides.value.children[0].offsetWidth
@@ -137,7 +135,6 @@ export default {
                 })
             }
         }
-
         const setWidthIsBigger = () => {
             if (worksWrapper.value) {
                 if (innerWidth > innerHeight && innerWidth >= 1024) {
@@ -150,7 +147,6 @@ export default {
                 }
             }
         }
-
         const setActiveSlideDefault = () => {
             if (works.value && slides.value) {
                 works.value.map(work => work.active = false)
@@ -158,7 +154,6 @@ export default {
                 slides.value.style.left = '0px'
             }
         }
-
         const setShowWorks = () => {
             if (!worksWrapper.value) return
             if (innerWidth > 1024) {
@@ -168,13 +163,10 @@ export default {
             }
             else {
                 showWorks.value = true
-
             }
         }
 
         onMounted(() => {
-            // setSlideWidths()
-
             setWidthIsBigger()
             window.addEventListener('resize', e => {
                 setSlideWidths()
@@ -205,11 +197,9 @@ export default {
 .h-76vw {
     height: 76vw;
 }
-
 .bg-font-size {
     font-size: 20vw;
 }
-
 .rotateH1 {
     letter-spacing: 0.38vw;
     transform-origin: 0 50%;

@@ -8,7 +8,7 @@
                     appear
             >
                 <div ref="stripes" class="absolute w-full h-screen">
-                    <div class="z-0 absolute top-1/2 xl:mt-24 -mt-24 2xl:top-1/2 -right-3/4 transform -rotate-30">
+                    <div class="z-0 absolute top-1/2 xl:mt-24 -mt-12 2xl:top-1/2 -right-3/4 transform -rotate-30">
                         <transition
                                 enter-active-class="transition delay-300 transform duration-1000 ease-in"
                                 enter-from-class="translate-x-full opacity-0"
@@ -72,9 +72,10 @@
                         enter-from-class="rotate-30 translate-x-full translate-y-1/3 opacity-0"
                         appear
                 >
-                    <div class="z-10 lg:h-screen transform lg:fixed block overflow-hidden flex items-center flex-col
-                justify-end 2xl:right-16 xl:-right-4 -right-10 bottom-0"
-                         ref="me"
+                    <div
+                            class="z-10 lg:h-screen transform -mr-12 xl:mr-0 lg:fixed block overflow-hidden flex items-center flex-col
+                                justify-end 2xl:right-16 xl:-right-4 -right-10 bottom-0"
+                            ref="me"
                     >
                         <div ref="topHead" class="z-10 h-1/3 flex flex items-end">
                             <TopHead
@@ -116,7 +117,7 @@
                             </div>
                         </div>
 
-                        <div ref="rest" class="z-10 xl:mb-0 lg:-mb-36 -mb-64 lg:h-2/3 flex items-start">
+                        <div ref="rest" class="z-10 xl:mb-0 lg:-mb-12 -mb-64 lg:h-2/3 flex items-start">
                             <Rest class="rest sm:mb-0 mb-24 2xl:w-2xl-head xl:w-xl-head md:w-md-head w-sm-head"/>
                         </div>
                     </div>
@@ -184,7 +185,6 @@ export default {
                 })
             })
         }
-
         const translateMeTopAndRest = () => {
             if (home.value) {
                 const homeRect = home.value.getBoundingClientRect()

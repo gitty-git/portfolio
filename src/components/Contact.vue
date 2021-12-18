@@ -1,6 +1,6 @@
 <template>
     <div ref="contact" id="contact"
-         class="sm:h-screen sm:mt-0 mt-16 mb-36 sm:mb-0 px-2 flex justify-center items-center flex-col">
+         class="sm:h-screen sm:mt-0 mt-16 px-2 flex justify-center items-center flex-col">
         <h1 ref="title" class="font-black opacity-90 text-5xl sm:text-8xl">EMAIL ME</h1>
         <div ref="wrapper" class="flex justify-center items-center flex-col">
             <div @click="$refs.nameRef.focus()" class="w-full mt-16 relative">
@@ -98,7 +98,7 @@
                     leave-active-class="transition transform duration-200 ease-in"
                     leave-to-class="translate-y-full opacity-0"
             >
-                <div v-if="showBtn" class="absolute bottom-0 sm:bottom-40">
+                <div v-if="showBtn">
                     <transition
                             mode="out-in"
                             enter-active-class="transition transform duration-200 ease-out"
