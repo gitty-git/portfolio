@@ -6,7 +6,7 @@
 
     <div
             ref="worksWrapper" id="works"
-            class="z-20 w-full -my-12 sm:my-0 transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
+            class="z-20 w-full -mt-16 -mb-8 sm:m-0 transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
                 sm:overflow-hidden sm:relative"
     >
         <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-20"></div>
@@ -22,7 +22,7 @@
             </transition>
         </div>
 
-        <div class="xl:ml-24 sm:-top-1/4 sm:mt-32 md:mt-48 lg:mt-32 2xl:mt-12 left-1/4 sm:left-0 absolute w-full transform sm:-rotate-30">
+        <div class="xl:ml-24 sm:-top-1/4 sm:mt-32 md:mt-48 lg:mt-32 2xl:mt-12 left-1/4 sm:left-0 -ml-6 absolute w-full transform sm:-rotate-30">
             <h1 class="sm:hidden block text-xl opacity-90 uppercase font-black">My recent works</h1>
 
             <div class="xl:text-6xl text-4xl sm:block hidden -mx-4 xl:-mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
