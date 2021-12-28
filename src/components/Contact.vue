@@ -111,7 +111,7 @@
                                 v-if="!isLoading"
                                 @mouseover="$refs.backOrangeRect.style.transform = 'translateY(16px)'"
                                 @mouseleave="$refs.backOrangeRect.style.transform = 'translateY(0px)'"
-                                class="bg-antiqueWhite transform sm:scale-100 scale-50 sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 relative overflow-hidden cursor-pointer shadow-md">
+                                class="bg-antiqueWhite transform sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 relative overflow-hidden cursor-pointer shadow-md">
                             <div class="transform -rotate-30">
                                 <div ref="backOrangeRect"
                                      class="duration-200 top-12 absolute h-72 w-72 bg-orangeRed"></div>
@@ -121,15 +121,18 @@
                                 Submit
                             </h1>
                         </div>
+
                         <div class="flex justify-center items-center transform sm:scale-100 scale-50 sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 text-2xl"
                              v-else-if="messageSent">
                             Message sent!
                         </div>
+
                         <div class="flex font-semibold justify-center items-center transform sm:mt-12 mt-8 sm:mb-0 mb-16 w-64 h-16 text-sm uppercase"
                              v-else-if="nameErr || emailErr || messageErr">
                             There's a submission problem
                         </div>
-                        <div class="flex "
+
+                        <div class="flex h-72"
                              v-else-if="isLoading">
                             <svg class="w-8 animate-spin" xmlns="http://www.w3.org/2000/svg" width="76" height="76"
                                  viewBox="0 0 76 76">
@@ -250,6 +253,7 @@ export default {
 
         onMounted(() => {
             setWrapperWidth()
+            setShowBtn()
 
             window.addEventListener('resize', () => {
                 setWrapperWidth()
