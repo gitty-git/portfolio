@@ -29,7 +29,7 @@ module.exports = {
                 'vh': '100vw',
             },
             width: {
-                '2xl-head': '720px',
+                '2xl-head': '100%',
                 'xl-head': '690px',
                 'md-head': '600px',
                 'sm-head': '80vw',

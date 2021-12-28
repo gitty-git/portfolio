@@ -22,7 +22,8 @@
             </transition>
         </div>
 
-        <div class="xl:ml-24 sm:-top-1/4 sm:mt-32 md:mt-48 lg:mt-32 2xl:mt-12 left-1/4 sm:left-0 -ml-6 absolute w-full transform sm:-rotate-30">
+        <div class="xl:ml-40 sm:ml-8 lg:ml-24 sm:-top-1/4 sm:mt-32 md:mt-48 lg:mt-32 xl:mt-12 2xl:mt-8
+        left-1/4 sm:left-0 -ml-6 absolute w-full transform sm:-rotate-30">
             <h1 class="sm:hidden block text-xl opacity-90 uppercase font-black">My recent works</h1>
 
             <div class="xl:text-6xl text-4xl sm:block hidden -mx-4 xl:-mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">

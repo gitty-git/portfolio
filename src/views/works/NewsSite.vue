@@ -55,12 +55,17 @@ export default {
         const setMarginBottom = () => {
             if (images.value) {
                 const imgChildren = [...images.value.children]
-                if (images.value) {
+                if (images.value && innerWidth >= 1024) {
                     images.value.style.marginBottom = `${scrollY / 4}px`
                 }
                 if (imgChildren.length < 5) {
                     imgChildren.forEach((child) => {
-                        child.style.marginBottom = `${mb - scrollY / 5}px`
+                        if (innerWidth >= 1024) {
+                            child.style.marginBottom = `${mb - scrollY / 5}px`
+                        }
+                        else {
+                            child.style.marginBottom = mb + 'px'
+                        }
                     })
                 }
             }
