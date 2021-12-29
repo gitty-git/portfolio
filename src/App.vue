@@ -1,13 +1,12 @@
 <template>
     <div class="text-graphiteBlack font-sans bg-blueGray">
         <router-view v-slot="{ Component }">
-            <keep-alive>
+            <keep-alive include="Main">
                 <component :is="Component" />
             </keep-alive>
         </router-view>
 <!--        <router-view></router-view>-->
         <Navs/>
-        <!-- <Main/> -->
     </div>
 </template>
 <script>
