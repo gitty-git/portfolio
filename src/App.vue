@@ -1,6 +1,11 @@
 <template>
     <div class="text-graphiteBlack font-sans bg-blueGray">
-        <router-view></router-view>
+        <router-view v-slot="{ Component }">
+            <keep-alive>
+                <component :is="Component" />
+            </keep-alive>
+        </router-view>
+<!--        <router-view></router-view>-->
         <Navs/>
         <!-- <Main/> -->
     </div>

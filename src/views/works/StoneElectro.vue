@@ -7,7 +7,7 @@
                 enter-from-class="translate-x-full opacity-0"
         >
             <div class="h-full px-2 md:px-14 xl:px-24 2xl:px-48 relative w-full bg-antiqueWhite flex justify-between lg:flex-row flex-col">
-                <div class="w-full md:w-full lg:w-1/2 xl:w-5/12 2xl:w-4/12 mt-36">
+                <div class="w-full md:w-full lg:w-1/2 xl:w-5/12 2xl:w-4/12 mt-12 sm:mt-36">
                     <div class="lg:fixed pr-0 md:pr-28 lg:pr-36 2xl:pr-48 w-full md:w-full lg:w-1/2 xl:w-5/12 2xl:w-4/12">
                         <div class="xl:mb-16 mb-8">
                             <h1 class="2xl:text-23vw leading-none text-3xl font-black mb-4">1. Stone Electro.</h1>
