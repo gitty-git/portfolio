@@ -141,7 +141,7 @@ import Laravel from './icons/Laravel'
 import Vue from './icons/Vue'
 import XD from './icons/XD'
 import Navs from '@/components/Navs'
-import { ref, onMounted, onUnmounted, inject } from 'vue'
+import { ref, onMounted, onUnmounted, inject, onActivated } from 'vue'
 
 export default {
     components: {Navs, Hello, TopHead, Rest, Tailwind, CSS3, HTML5, FireBase, JS, Laravel, Vue, XD},
@@ -187,7 +187,7 @@ export default {
             })
         }
         const translateMeTopAndRest = () => {
-            if (home.value) {
+            if (home.value && innerWidth >= 1024) {
                 const homeRect = home.value.getBoundingClientRect()
                 if (documentHeight.value.scrollTop >= homeRect.height) {
                     me.value.style.position = 'absolute'
@@ -201,39 +201,46 @@ export default {
                 }
             }
         }
+        const setHeadSize = () => {
+            if (me.value) {
+                if (innerWidth < 1024) {
+                    topHead.value.style.transform = `translateY(0px)`
+                    rest.value.style.transform = `translateY(0px)`
+                    me.value.style.position = 'static'
+                }
+                else {
+                    topHead.value.style.transform = `translateY(-${window.scrollY / 15}px)`
+                    rest.value.style.transform = `translateY(${window.scrollY / 15}px)`
+                    me.value.style.position = 'fixed'
+                }
+            }
+        }
 
-        onMounted(() => {
+        const setStripesOpacity = () => {
+            if (stripes.value) {
+                stripes.value.style.opacity = `${1 - scrollY / 1000}`
+            }
+        }
+
+        onActivated(() => {
             animateIcons()
+            translateMeTopAndRest()
             icons.value.style.height = '0'
 
             window.addEventListener('resize', () => {
-                if (me.value) {
-                    if (innerWidth < 1024) {
-                        topHead.value.style.transform = `translateY(0px)`
-                        rest.value.style.transform = `translateY(0px)`
-                        me.value.style.position = 'static'
-                    }
-                    else {
-                        topHead.value.style.transform = `translateY(-${window.scrollY / 15}px)`
-                        rest.value.style.transform = `translateY(${window.scrollY / 15}px)`
-                        me.value.style.position = 'fixed'
-                    }
-                }
+                setHeadSize()
             })
 
             window.addEventListener('scroll', e => {
-                if (stripes.value) {
-                    stripes.value.style.opacity = `${1 - scrollY / 1000}`
-                }
-
-                if (innerWidth >= 1024) {
-                    translateMeTopAndRest()
-                }
+                setStripesOpacity()
+                translateMeTopAndRest()
             })
         })
 
         onUnmounted(() => {
             window.removeEventListener('scroll', translateMeTopAndRest)
+            window.removeEventListener('scroll', setStripesOpacity)
+            window.removeEventListener('resize', setHeadSize)
         })
 
         return {width, home, me, rest, topHead, icons, iconsWrapper, stripes, hello}
