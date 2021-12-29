@@ -2,6 +2,9 @@ module.exports = {
     purge: ['./public/**/*.html', './src/**/*.vue'],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        minWidth: {
+            'xl-head': '650px',
+        },
         fontFamily: {
             'sans': ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
         },
@@ -18,7 +21,9 @@ module.exports = {
             },
             inset: {
                 '20vh': '24px',
-                '12p': '12%'
+                '12p': '12%',
+                '7p': '7%',
+                '5p': '5vw'
             },
             scale: {
                 'sm': '0.30'
@@ -29,9 +34,9 @@ module.exports = {
                 'vh': '100vw',
             },
             width: {
-                '2xl-head': '100%',
-                'xl-head': '690px',
-                'md-head': '600px',
+                '2xl-head': '36vw',
+                'xl-head': '600px',
+                'md-head': '70vw',
                 'sm-head': '80vw',
                 '44vw' : '44vw',
             },

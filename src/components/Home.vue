@@ -37,7 +37,7 @@
             </transition>
 
             <div class="w-full top-0 lg:absolute">
-                <div class="lg:h-screen px-2 lg:absolute sca left-24 2xl:left-12p flex flex-col lg:justify-center z-10">
+                <div class="lg:h-screen px-2 lg:left-7p xl:left-12p lg:absolute flex flex-col lg:justify-center z-10">
                     <transition
                             enter-active-class="transition delay-200 transform duration-800"
                             enter-from-class="rotate-15 translate-x-full  opacity-0"
@@ -73,14 +73,14 @@
                         appear
                 >
                     <div
-                            class="z-10 lg:h-screen transform mr-0 sm:-mr-16 lg:mr-0 sm:-mb-36 lg:mb-0 -mr-8
+                            class="z-10 lg:h-screen transform lg:mb-0 sm:-mb-36 lg:ml-0 ml-12
                                 lg:fixed block overflow-hidden flex items-center flex-col
-                                justify-end 2xl:right-16 xl:-right-4 -right-10 bottom-0"
+                                justify-end sm:-right-0 xl:right-0 2xl:right-5p bottom-0"
+                            :class="{'sm:-right-20' : !isWidthBigger}"
                             ref="me"
                     >
                         <div ref="topHead" class="z-10 h-1/3 flex flex items-end">
-                            <TopHead
-                                    class="top-head 2xl:w-2xl-head xl:w-xl-head md:w-md-head sm:mt-0 mt-4 w-sm-head -mb-2"/>
+                            <TopHead class="top-head -mb-2 sm:mt-0 mt-4 2xl:w-2xl-head 2xl:min-w-xl-head sm:w-xl-head w-sm-head"/>
                         </div>
 
                         <!-- ICONS -->
@@ -118,8 +118,8 @@
                             </div>
                         </div>
 
-                        <div ref="rest" class="z-10 xl:mb-0 lg:-mb-12 -mb-64 lg:h-2/3 flex items-start">
-                            <Rest class="rest sm:mb-0 mb-24 2xl:w-2xl-head xl:w-xl-head md:w-md-head w-sm-head"/>
+                        <div ref="rest" class="z-10 lg:mb-0 -mb-64 lg:h-2/3 flex items-start">
+                            <Rest class="rest sm:mb-0 mb-24 2xl:w-2xl-head 2xl:min-w-xl-head sm:w-xl-head w-sm-head"/>
                         </div>
                     </div>
                 </transition>
@@ -155,6 +155,7 @@ export default {
         const iconsWrapper = ref(null)
         const stripes = ref(null)
         const hello = ref(null)
+        const isWidthBigger = ref(true)
 
         const documentHeight = ref(document.documentElement)
 
@@ -222,13 +223,19 @@ export default {
             }
         }
 
+        const identifyOrientation = () => {
+            innerWidth > innerHeight ? isWidthBigger.value = true : isWidthBigger.value = false
+        }
+
         onActivated(() => {
             animateIcons()
             translateMeTopAndRest()
+            identifyOrientation()
             icons.value.style.height = '0'
 
             window.addEventListener('resize', () => {
                 setHeadSize()
+                identifyOrientation()
             })
 
             window.addEventListener('scroll', e => {
@@ -241,9 +248,10 @@ export default {
             window.removeEventListener('scroll', translateMeTopAndRest)
             window.removeEventListener('scroll', setStripesOpacity)
             window.removeEventListener('resize', setHeadSize)
+            window.removeEventListener('resize', identifyOrientation)
         })
 
-        return {width, home, me, rest, topHead, icons, iconsWrapper, stripes, hello}
+        return {width, home, me, rest, topHead, icons, iconsWrapper, stripes, hello, isWidthBigger}
     }
 }
 </script>
