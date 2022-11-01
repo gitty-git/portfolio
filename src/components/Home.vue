@@ -2,39 +2,47 @@
     <div id="home" class="bg-blueGray lg:pt-0 pt-6 lg:h-screen" ref='home'>
         <div class="lg:absolute w-full lg:h-screen">
             <!-- STRIPES -->
-<!--            <transition-->
-<!--                    enter-active-class="transition transform duration-700 ease-in"-->
-<!--                    enter-from-class="rotate-30 translate-x-1/2 translate-y-full opacity-0"-->
-<!--                    appear-->
-<!--            >-->
-<!--                <div ref="stripes" class="absolute w-full h-screen">-->
-<!--                    <div class="z-0 invisible sm:visible absolute top-1/2 xl:mt-24 -mt-12 2xl:top-1/2 -right-3/4 transform -rotate-30">-->
-<!--                        <transition-->
-<!--                                enter-active-class="transition delay-300 transform duration-1000 ease-in"-->
-<!--                                enter-from-class="translate-x-full opacity-0"-->
-<!--                                appear-->
-<!--                        >-->
-<!--                            <div class="bg-antiqueWhite opacity-50 w-long white-stripe"></div>-->
-<!--                        </transition>-->
+            <transition
+                    enter-active-class="transition transform duration-700 ease-in"
+                    enter-from-class="rotate-30 translate-x-1/2 translate-y-full opacity-0"
+                    appear
+            >
+                <div ref="stripes" class="absolute w-full h-screen">
+                    <div class="z-0 invisible sm:visible absolute top-1/2 xl:mt-36 -mt-12 2xl:top-1/2 -right-3/4 transform -rotate-30">
+                        <div>
+                            <transition
+                                    enter-active-class="transition delay-300 transform duration-1000 ease-in"
+                                    enter-from-class="translate-x-full opacity-0"
+                                    appear
+                            >
+                                <div class="bg-antiqueWhite w-long white-stripe"></div>
+                            </transition>
+                        </div>
 
-<!--                        <transition-->
-<!--                                enter-active-class="transition delay-300 transform duration-1000 ease-in"-->
-<!--                                enter-from-class="-translate-x-full opacity-0"-->
-<!--                                appear-->
-<!--                        >-->
-<!--                            <div class="bg-orangeRed w-long red-stripe"></div>-->
-<!--                        </transition>-->
+                        <div>
+                        <transition
+                                enter-active-class="transition delay-300 transform duration-1000 ease-in"
+                                enter-from-class="-translate-x-full opacity-0"
+                                appear
+                        >
+                            <div class="bg-orangeRed w-long red-stripe"></div>
+                        </transition>
+                        </div>
 
-<!--                        <transition-->
-<!--                                enter-active-class="transition delay-300 transform duration-1000 ease-in"-->
-<!--                                enter-from-class="translate-x-full opacity-0"-->
-<!--                                appear-->
-<!--                        >-->
-<!--                            <div class="bg-graphiteBlack w-long black-stripe"></div>-->
-<!--                        </transition>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </transition>-->
+
+
+<!--                        <div class="opacity-50">-->
+<!--                            <transition-->
+<!--                                    enter-active-class="transition delay-300 transform duration-1000 ease-in"-->
+<!--                                    enter-from-class="translate-x-full opacity-0"-->
+<!--                                    appear-->
+<!--                            >-->
+<!--                                <div class="bg-antiqueWhite w-long white-stripe h-16"></div>-->
+<!--                            </transition>-->
+<!--                        </div>-->
+                    </div>
+                </div>
+            </transition>
 
             <div class="w-full top-0 lg:absolute">
                 <div class="lg:h-screen px-4 lg:left-7p xl:left-12p lg:absolute flex flex-col lg:justify-center z-10">
@@ -73,7 +81,7 @@
                         appear
                 >
                     <div
-                            class="z-10 lg:h-screen transform lg:mb-0 sm:-mb-36 lg:ml-0 ml-12
+                            class="z-10 lg:h-screen transform lg:mb-0 mt-8 sm:mt-0 -mb-20 sm:-mb-36 ml-8
                                 lg:fixed block overflow-hidden flex items-center flex-col
                                 justify-end sm:-right-0 xl:right-0 2xl:right-5p bottom-0"
                             :class="{'sm:-right-20' : !isWidthBigger}"
@@ -118,7 +126,7 @@
                             </div>
                         </div>
 
-                        <div ref="rest" class="z-10 lg:mb-0 -mb-64 lg:h-2/3 flex items-start">
+                        <div ref="rest" class="lg:mb-0 -mb-64 lg:h-2/3 flex items-start">
                             <Rest class="rest sm:mb-0 mb-24 2xl:w-2xl-head 2xl:min-w-xl-head sm:w-xl-head w-sm-head"/>
                         </div>
                     </div>
@@ -263,15 +271,15 @@ export default {
 }
 
 .white-stripe {
-    height: 24vh;
+    height: 42vh;
 }
 
 .red-stripe {
-    height: 16vh;
+    height: 30vh;
 }
 
 .black-stripe {
-    height: 10vh;
+    height: 6vh;
 }
 
 .rest {

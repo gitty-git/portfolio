@@ -1,7 +1,9 @@
 <template>
     <div ref="contact" id="contact"
-         class="sm:h-screen sm:mt-0 mt-16 px-6 flex justify-center items-center flex-col">
-        <h1 ref="title" class="font-black opacity-90 text-5xl sm:text-8xl">EMAIL ME</h1>
+         class="h-screen pt-16 sm:pt-0 sm:mt-0 px-6 flex justify-center items-center flex-col">
+        <router-link :to="{name: 'Main', params: { hash: '#contact' }}" >
+            <div ref="title" class="font-black opacity-90 text-5xl sm:text-8xl">EMAIL ME</div>
+        </router-link>
         <div ref="wrapper" class="flex px-0.5 sm:px-1.5 justify-center px-2 items-center flex-col">
             <div @click="$refs.nameRef.focus()" class="w-full mt-16 relative">
                 <div for="name"
@@ -16,7 +18,7 @@
                        v-model="name"
                        @focusout="active = false"
                        @focus="active = 'name'"
-                       class="pb-2 w-full outline-none text-2xl bg-blueGray border-b border-graphiteBlack">
+                       class="pb-2 rounded-none w-full outline-none text-2xl bg-blueGray border-b border-graphiteBlack">
 
                 <!-- ERROR -->
                 <transition
@@ -45,7 +47,7 @@
                         v-model="email"
                         @focusout="active = false"
                         @focus="active = 'email'"
-                        class="pb-2 w-full outline-none text-2xl bg-blueGray border-b border-graphiteBlack">
+                        class="pb-2 w-full outline-none text-2xl bg-blueGray rounded-none border-b border-graphiteBlack">
 
                 <!-- ERROR -->
                 <transition
@@ -77,7 +79,7 @@
                           v-model="message"
                           ref="textAreaRef"
                           rows="5"
-                          class="pb-2 duration-200 w-full outline-none text-xl bg-blueGray border-b border-graphiteBlack">
+                          class="pb-2 rounded-none duration-200 w-full outline-none text-xl bg-blueGray border-b border-graphiteBlack">
                 </textarea>
                 <!-- ERROR -->
                 <transition

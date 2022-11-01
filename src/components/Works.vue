@@ -6,7 +6,7 @@
 
     <div
             ref="worksWrapper" id="works"
-            class="z-20 h-screen w-full -mt-4 sm:m-0 transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
+            class="h-screen z-20 w-full -mt-20 sm:m-0 transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
                 sm:overflow-hidden sm:relative"
     >
         <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-20"></div>
@@ -78,7 +78,7 @@
 </template>
 <script>
 import ArrowR from './icons/ArrowR.vue'
-import { onBeforeMount, onMounted, onUnmounted, ref, watchEffect } from 'vue'
+import { onMounted, onUnmounted, ref, watchEffect } from 'vue'
 
 export default {
     components: {ArrowR},
@@ -173,14 +173,14 @@ export default {
         }
         const setShowWorks = () => {
             if (!worksWrapper.value) return
-            if (innerWidth > 1024) {
+            // if (innerWidth > 1024) {
                 const cond1 = scrollY > worksWrapper.value.offsetTop - worksWrapper.value.offsetHeight * 0.66
                 const cond2 = scrollY < worksWrapper.value.offsetTop + worksWrapper.value.offsetHeight * 0.66
                 showWorks.value = cond1 && cond2
-            }
-            else {
-                showWorks.value = true
-            }
+            // }
+            // else {
+            //     showWorks.value = true
+            // }
         }
 
         onMounted(() => {

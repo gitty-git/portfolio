@@ -66,8 +66,9 @@ const scrollBehavior = (to, from, savedPosition) => {
         //
         // }, 0)
         let works = document.getElementById('works')
+        let margin = (window.innerHeight - works.offsetHeight) / 2
 
-        let top = to.params.hash === '#works' && (window.screen.height - works.offsetHeight) / 2 - 58
+        let top = (to.params.hash === '#works' && margin) || (to.params.hash === '#about' && innerWidth < 640 && margin - 100)
 
         to.name !== from.name && to.params.hash && resolve({el: to.params.hash, top})
         !to.params.hash && resolve(pos)

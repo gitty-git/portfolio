@@ -40,22 +40,22 @@
         </router-link>
     </transition>
 
-    <div class="z-50 w-full h-12 fixed right-0 bottom-0 blur-4px lg:invisible visible"></div>
+    <div class="z-50 w-full h-16 fixed right-0 bottom-0 blur-4px lg:invisible visible"></div>
 
-    <div class="z-50 uppercase text-sm font-black lg:invisible visible fixed bottom-0 right-0 h-12 w-full flex items-center justify-between px-4">
-        <router-link class="p-2" :to="{name: 'Main', params: { hash: '#home' }}">
+    <div class="z-50 uppercase text-sm font-black lg:invisible visible fixed bottom-0 right-0 h-16 w-full flex items-center justify-between px-4">
+        <router-link class="p-4" :to="{name: 'Main', params: { hash: '#home' }}">
             <Logo class="w-4"/>
         </router-link>
 
-        <router-link class="p-2" :to="{name: 'Main', params: { hash: '#about' }}">
+        <router-link class="p-4" :to="{name: 'Main', params: { hash: '#about' }}">
             About
         </router-link>
 
-        <router-link class="p-2" :to="{name: 'Main', params: { hash: '#works' }}">
+        <router-link class="p-4" :to="{name: 'Main', params: { hash: '#works' }}">
             Works
         </router-link>
 
-        <router-link class="p-2" :to="{name: 'Main', params: { hash: '#contact' }}">
+        <router-link class="p-4" :to="{name: 'Main', params: { hash: '#contact' }}">
             Contact
         </router-link>
     </div>
