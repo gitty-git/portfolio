@@ -10,7 +10,7 @@
                 <div class="w-full md:w-full lg:w-1/2 xl:w-5/12 2xl:w-4/12 mt-12 sm:mt-36">
                     <div class="lg:fixed pr-0 md:pr-28 lg:pr-36 2xl:pr-48 w-full md:w-full lg:w-1/2 xl:w-5/12 2xl:w-4/12">
                         <div class="xl:mb-16 mb-8">
-                            <h1 class="2xl:text-23vw leading-none text-3xl font-black mb-4">1. Stone Electro.</h1>
+                            <h1 class="2xl:text-23vw leading-none text-3xl font-black mb-4">2. Stone Electro.</h1>
                             <p><span class="bg-white xl:text-sm italic px-2 py-1">Design / Front End</span></p>
                         </div>
 

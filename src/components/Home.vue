@@ -2,42 +2,42 @@
     <div id="home" class="bg-blueGray lg:pt-0 pt-6 lg:h-screen" ref='home'>
         <div class="lg:absolute w-full lg:h-screen">
             <!-- STRIPES -->
-            <transition
-                    enter-active-class="transition transform duration-700 ease-in"
-                    enter-from-class="rotate-30 translate-x-1/2 translate-y-full opacity-0"
-                    appear
-            >
-                <div ref="stripes" class="absolute w-full h-screen">
-                    <div class="z-0 absolute top-1/2 xl:mt-24 -mt-12 2xl:top-1/2 -right-3/4 transform -rotate-30">
-                        <transition
-                                enter-active-class="transition delay-300 transform duration-1000 ease-in"
-                                enter-from-class="translate-x-full opacity-0"
-                                appear
-                        >
-                            <div class="bg-antiqueWhite w-long white-stripe"></div>
-                        </transition>
+<!--            <transition-->
+<!--                    enter-active-class="transition transform duration-700 ease-in"-->
+<!--                    enter-from-class="rotate-30 translate-x-1/2 translate-y-full opacity-0"-->
+<!--                    appear-->
+<!--            >-->
+<!--                <div ref="stripes" class="absolute w-full h-screen">-->
+<!--                    <div class="z-0 invisible sm:visible absolute top-1/2 xl:mt-24 -mt-12 2xl:top-1/2 -right-3/4 transform -rotate-30">-->
+<!--                        <transition-->
+<!--                                enter-active-class="transition delay-300 transform duration-1000 ease-in"-->
+<!--                                enter-from-class="translate-x-full opacity-0"-->
+<!--                                appear-->
+<!--                        >-->
+<!--                            <div class="bg-antiqueWhite opacity-50 w-long white-stripe"></div>-->
+<!--                        </transition>-->
 
-                        <transition
-                                enter-active-class="transition delay-300 transform duration-1000 ease-in"
-                                enter-from-class="-translate-x-full opacity-0"
-                                appear
-                        >
-                            <div class="bg-orangeRed w-long red-stripe"></div>
-                        </transition>
+<!--                        <transition-->
+<!--                                enter-active-class="transition delay-300 transform duration-1000 ease-in"-->
+<!--                                enter-from-class="-translate-x-full opacity-0"-->
+<!--                                appear-->
+<!--                        >-->
+<!--                            <div class="bg-orangeRed w-long red-stripe"></div>-->
+<!--                        </transition>-->
 
-                        <transition
-                                enter-active-class="transition delay-300 transform duration-1000 ease-in"
-                                enter-from-class="translate-x-full opacity-0"
-                                appear
-                        >
-                            <div class="bg-graphiteBlack w-long black-stripe"></div>
-                        </transition>
-                    </div>
-                </div>
-            </transition>
+<!--                        <transition-->
+<!--                                enter-active-class="transition delay-300 transform duration-1000 ease-in"-->
+<!--                                enter-from-class="translate-x-full opacity-0"-->
+<!--                                appear-->
+<!--                        >-->
+<!--                            <div class="bg-graphiteBlack w-long black-stripe"></div>-->
+<!--                        </transition>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </transition>-->
 
             <div class="w-full top-0 lg:absolute">
-                <div class="lg:h-screen px-2 lg:left-7p xl:left-12p lg:absolute flex flex-col lg:justify-center z-10">
+                <div class="lg:h-screen px-4 lg:left-7p xl:left-12p lg:absolute flex flex-col lg:justify-center z-10">
                     <transition
                             enter-active-class="transition delay-200 transform duration-800"
                             enter-from-class="rotate-15 translate-x-full  opacity-0"
@@ -52,12 +52,12 @@
                                     appear
                             >
                                 <div ref="hello" class="z-20 -ml-vw w-full font-black">
-                                    <Hello class="lg:w-44vw flex justify-start"/>
+                                    <Hello class="lg:w-44vw lg:ml-0 -mx-1.5 flex justify-start"/>
                                 </div>
                             </transition>
 
                             <!-- MY NAME -->
-                            <div class="z-50 ml-1 md:ml-2 lg:ml-0">
+                            <div class="z-50">
                                 <p class="xl:text-5xl sm:text-4xl sm:ml-0 -ml-0.5 text-2xl lg:mb-5 xl:mb-8 sm:mb-8 mb-2 font-light">My name's Evgeny,</p>
                                 <p class="xl:text-3xl sm:text-2xl text-xl sm:-mb-1 -mb-2 font-bold">Web Developer,</p>
                                 <p class="xl:text-3xl sm:text-2xl text-xl font-bold">Designer</p>
@@ -85,7 +85,7 @@
 
                         <!-- ICONS -->
                         <div ref="iconsWrapper"
-                             class="lg:flex transform 2xl:scale-100 xl:scale-90 scale-75 hidden items-start">
+                             class="lg:flex transform 2xl:scale-95 scale-85 hidden items-start">
                             <div ref="icons" class="z-0 -mt-20 opacity-90">
                                 <div class="flex mt-2">
                                     <div>
@@ -98,15 +98,15 @@
                                         <FireBase class="mr-4"/>
                                     </div>
                                     <div>
-                                        <Laravel class="mr-6 mt-10"/>
+                                        <Figma class="mr-6 mt-10"/>
                                     </div>
                                 </div>
                                 <div class="flex -mt-5">
                                     <div>
-                                        <XD class="mr-10 mt-4"/>
+                                        <Laravel class="mr-10 mt-4"/>
                                     </div>
                                     <div>
-                                        <HTML5 class="mr-16 mt-6"/>
+                                        <XD class="mr-16 mt-6"/>
                                     </div>
                                     <div>
                                         <Vue class="mr-10 mt-4"/>
@@ -140,11 +140,12 @@ import JS from './icons/JS'
 import Laravel from './icons/Laravel'
 import Vue from './icons/Vue'
 import XD from './icons/XD'
+import Figma from './icons/Figma'
 import Navs from '@/components/Navs'
 import { ref, onMounted, onUnmounted, inject, onActivated } from 'vue'
 
 export default {
-    components: {Navs, Hello, TopHead, Rest, Tailwind, CSS3, HTML5, FireBase, JS, Laravel, Vue, XD},
+    components: {Navs, Hello, TopHead, Rest, Tailwind, CSS3, HTML5, FireBase, JS, Laravel, Vue, XD, Figma},
     setup() {
         const width = ref('0')
         const home = ref(null)

@@ -1,8 +1,8 @@
 <template>
     <div ref="contact" id="contact"
-         class="sm:h-screen sm:mt-0 mt-16 px-2 flex justify-center items-center flex-col">
+         class="sm:h-screen sm:mt-0 mt-16 px-6 flex justify-center items-center flex-col">
         <h1 ref="title" class="font-black opacity-90 text-5xl sm:text-8xl">EMAIL ME</h1>
-        <div ref="wrapper" class="flex px-0.5 sm:px-1.5 justify-center items-center flex-col">
+        <div ref="wrapper" class="flex px-0.5 sm:px-1.5 justify-center px-2 items-center flex-col">
             <div @click="$refs.nameRef.focus()" class="w-full mt-16 relative">
                 <div for="name"
                      :class="{'-top-6 text-sm': active === 'name' || name.length > 0}"
@@ -98,7 +98,7 @@
                     leave-active-class="transition transform duration-200 ease-in"
                     leave-to-class="translate-y-full opacity-0"
             >
-                <div v-if="showBtn">
+                <div v-if="showBtn" class="sm:my-0 my-12">
                     <transition
                             mode="out-in"
                             enter-active-class="transition transform duration-200 ease-out"
@@ -177,6 +177,7 @@ export default {
         const setWrapperWidth = () => {
             if (wrapper.value && innerWidth > 450) {
                 wrapper.value.style.width = title.value.offsetWidth + 'px'
+                wrapper.value.classList.add('px-2')
             }
             else {
                 wrapper.value.style.width = '100%'

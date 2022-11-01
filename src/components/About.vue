@@ -13,18 +13,20 @@
         </div>
         <transition
                 enter-active-class="transition transform duration-700 ease-out"
-                enter-from-class="translate-y-full opacity-0 scale-150 rotate-15"
+                enter-from-class="translate-y-full opacity-0  rotate-15"
                 leave-active-class="transition transform duration-500 ease-in"
-                leave-to-class="-translate-y-full opacity-0 scale-150 -rotate-15"
+                leave-to-class="-translate-y-full opacity-0  -rotate-15"
         >
-            <div v-if="showAbout" class="lg:absolute left-24 2xl:left-12p">
-                <ResponsibleTXT class="2xl:w-44vw lg:w-44vw w-full py-8 sm:w-full"/>
+            <div v-show="showAbout" class="lg:absolute px-2 lg:left-7p xl:left-12p">
+                <ResponsibleTXT class="2xl:w-44vw -mx-0.5 lg:w-44vw w-full py-8 sm:w-full"/>
+
                 <div class="xl:text-xl text-md mb-8 lg:mb-8">
                     <p>I have been creating in <span class="italic">HTML</span>, <span class="italic">CSS</span>,</p>
                     <p><span class="italic">Javascript</span> websites for over 4</p>
                     <p>years. At the moment, I enjoy</p>
                     <p>working with <span class="font-semibold">Vue 3</span></p>
                 </div>
+
                 <svg xmlns="http://www.w3.org/2000/svg" width="133.226" height="73.603" viewBox="0 0 133.226 73.603">
                     <path id="Path_73" data-name="Path 73" d="M0-106.868,73.6,26.358H0Z"
                           transform="translate(26.358) rotate(90)" fill="#393835" opacity="0.33"/>

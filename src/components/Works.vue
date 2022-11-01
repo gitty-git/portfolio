@@ -6,14 +6,14 @@
 
     <div
             ref="worksWrapper" id="works"
-            class="z-20 w-full -mt-16 -mb-8 sm:m-0 transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
+            class="z-20 h-screen w-full -mt-4 sm:m-0 transform flex sm:transform-none -rotate-30 sm:shadow-md sm:bg-antiqueWhite
                 sm:overflow-hidden sm:relative"
     >
         <div class="w-full sm:visible invisible opacity-30 h-2 bg-gradient-to-b from-graphiteBlack z-20"></div>
 
         <div class="bg-font-size opacity-5 font-black absolute -mt-24 2xl:-mt-12 left-1/3 top-2/3 transform sm:-rotate-30">
             <transition
-                    enter-active-class="transition delay-500 transform duration-700 ease-out"
+                    enter-active-class="transition transform duration-700 ease-out"
                     enter-from-class="translate-x-full opacity-0"
                     leave-active-class="transition transform duration-800 ease-in"
                     leave-to-class="-translate-x-full opacity-0"
@@ -28,7 +28,7 @@
 
             <div class="xl:text-6xl text-4xl sm:block hidden -mx-4 xl:-mx-10 font-black uppercase opacity-90 max-w-max transform sm:rotate-90">
                 <transition
-                        enter-active-class="transition delay-500 transform duration-700"
+                        enter-active-class="transition transform duration-700"
                         enter-from-class="-translate-x-96 opacity-0 -rotate-15"
                         leave-active-class="transition transform duration-300 ease-in"
                         leave-to-class="-translate-x-96 opacity-0 -rotate-15"
@@ -42,13 +42,13 @@
             </div>
 
 
-            <transition
-                    enter-active-class="transition transform delay-300 duration-800 ease-out"
-                    enter-from-class="translate-x-full skew-x-30 opacity-0"
-                    leave-active-class="transition transform delay-100 duration-1000 ease-in"
-                    leave-to-class="translate-x-full -skew-x-30 opacity-0"
-            >
-                <div v-show="showWorks" ref="slides" class="xl:mt-24 mt-4 sm:mt-12 left-0 w-full absolute duration-500">
+<!--            <transition-->
+<!--                    enter-active-class="transition transform delay-300 duration-800 ease-out"-->
+<!--                    enter-from-class="translate-x-full skew-x-30 opacity-0"-->
+<!--                    leave-active-class="transition transform delay-100 duration-1000 ease-in"-->
+<!--                    leave-to-class="translate-x-full -skew-x-30 opacity-0"-->
+<!--            >-->
+                <div ref="slides" class="xl:mt-24 mt-4 sm:mt-12 left-0 w-full absolute duration-500">
                     <div class="sm:w-2/3 lg:w-1/2 left-0 w-10/12 h-full absolute" v-for="(work, id) in works"
                          :key="work">
                         <div class="relative">
@@ -71,14 +71,14 @@
                         </div>
                     </div>
                 </div>
-            </transition>
+<!--            </transition>-->
 
         </div>
     </div>
 </template>
 <script>
 import ArrowR from './icons/ArrowR.vue'
-import { computed, onMounted, onUnmounted, ref, watchEffect } from 'vue'
+import { onBeforeMount, onMounted, onUnmounted, ref, watchEffect } from 'vue'
 
 export default {
     components: {ArrowR},
@@ -87,13 +87,21 @@ export default {
             {
                 id: 0,
                 active: true,
+                img: 'florets/florets.png',
+                title: 'Florets',
+                tags: 'Design / Full Stack',
+                link: 'florets'
+            },
+            {
+                id: 1,
+                active: false,
                 img: 'stone-electro/stone-electro.png',
                 title: 'Stone Electro',
                 tags: 'Design / Front End',
                 link: 'stone-electro'
             },
             {
-                id: 1,
+                id: 2,
                 active: false,
                 img: 'news-site/news-site.png',
                 title: 'News Site',
@@ -101,7 +109,7 @@ export default {
                 link: 'news-site'
             },
             {
-                id: 2,
+                id: 3,
                 active: false,
                 img: 'portfolio/portfolio.png',
                 title: 'Portfolio',
@@ -140,6 +148,7 @@ export default {
         }
         const setWidthIsBigger = () => {
             if (worksWrapper.value) {
+                worksWrapper.value.style.height = '100vh'
                 // console.log(innerWidth / innerHeight)
                 if (innerHeight / innerWidth < 0.60) {
                     worksWrapper.value.style.height = '100vh'

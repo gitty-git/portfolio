@@ -10,14 +10,14 @@
                 <div class="w-full md:w-full lg:w-1/2 xl:w-5/12 2xl:w-4/12 mt-12 sm:mt-36">
                     <div class="lg:fixed pr-0 md:pr-28 lg:pr-36 2xl:pr-48 w-full md:w-full lg:w-1/2 xl:w-5/12 2xl:w-4/12">
                         <div class="xl:mb-16 mb-8">
-                            <h1 class="2xl:text-23vw leading-none text-3xl font-black mb-4">3. Portfolio.</h1>
+                            <h1 class="2xl:text-23vw leading-none text-3xl font-black mb-4">4. Portfolio.</h1>
                             <p><span class="bg-white xl:text-sm italic px-2 py-1">Design / Full Stack</span></p>
                         </div>
 
                         <div class="xl:mb-12 mb-6 xl:text-md text-sm xl:text-base">
                             <h2 class="font-bold text-lg mb-4">Client request:</h2>
                             <p class="mb-4">Portfolio site with the ability to add, edit and delete works (Laravel / MySQL). </p>
-                            <p class="mb-4">In the work-post, you can add, delete, edit the description, set the image. The site must be able to edit the profile. The main page should display works with the ability to load more works.</p>
+                            <p class="mb-4">In posts, you can add, delete, edit the description and set the image. The site must be able to edit the profile. The main page should display works with the "load more" button.</p>
                         </div>
 
                         <div class="xl:text-md text-sm xl:text-base">
